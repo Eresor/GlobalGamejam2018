@@ -31,7 +31,6 @@ public class MainMenuController : MonoBehaviour {
     {
         deactivateAllMenu();
         PlayerSelectMenu.SetActive(true);
-        PlayerSelectHighlighted.Select();
     }
 
     public void OnExitButtonClick()
