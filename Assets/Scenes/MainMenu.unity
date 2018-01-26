@@ -248,7 +248,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1926496517}
+        - m_Target: {fileID: 1965986169}
           m_MethodName: OnMainMenuButtonClick
           m_Mode: 1
           m_Arguments:
@@ -605,7 +605,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1926496517}
+        - m_Target: {fileID: 1965986169}
           m_MethodName: OnPlayButtonClick
           m_Mode: 1
           m_Arguments:
@@ -821,7 +821,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1926496517}
+        - m_Target: {fileID: 1965986169}
           m_MethodName: OnExitButtonClick
           m_Mode: 1
           m_Arguments:
@@ -955,7 +955,6 @@ GameObject:
   - component: {fileID: 1926496520}
   - component: {fileID: 1926496519}
   - component: {fileID: 1926496518}
-  - component: {fileID: 1926496517}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -963,20 +962,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1926496517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1926496516}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 002757ada23d28c4ab9d4f10b4739fda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MainMenu: {fileID: 1881383911}
-  PlayerSelectMenu: {fileID: 2056084147}
-  playButton: {fileID: 0}
 --- !u!114 &1926496518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1064,6 +1049,7 @@ GameObject:
   - component: {fileID: 1965986168}
   - component: {fileID: 1965986167}
   - component: {fileID: 1965986166}
+  - component: {fileID: 1965986169}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1100,7 +1086,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1586554358}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &1965986168
@@ -1116,6 +1102,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1965986169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1965986165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 002757ada23d28c4ab9d4f10b4739fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenu: {fileID: 1881383911}
+  PlayerSelectMenu: {fileID: 2056084147}
+  MainMenuHighlighted: {fileID: 1586554361}
+  PlayerSelectHighlighted: {fileID: 214875656}
 --- !u!1 &2056084147
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,12 +9,11 @@ public class MainMenuController : MonoBehaviour {
     public GameObject MainMenu;
     public GameObject PlayerSelectMenu;
 
-    public Button playButton;
+    public Button MainMenuHighlighted;
+    public Button PlayerSelectHighlighted;
 
     void Start()
     {
-        Button btn = playButton.GetComponent<Button>();
-        btn.onClick.AddListener(OnPlayButtonClick);
     }
 
     // Update is called once per frame
@@ -32,6 +31,7 @@ public class MainMenuController : MonoBehaviour {
     {
         deactivateAllMenu();
         PlayerSelectMenu.SetActive(true);
+        PlayerSelectHighlighted.Select();
     }
 
     public void OnExitButtonClick()
@@ -43,5 +43,6 @@ public class MainMenuController : MonoBehaviour {
     {
         deactivateAllMenu();
         MainMenu.SetActive(true);
+        MainMenuHighlighted.Select();
     }
 }
