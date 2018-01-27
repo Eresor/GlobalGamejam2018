@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private ControlMode m_controlMode = ControlMode.Direct;
 
-    [SerializeField] private InputManager.Player player = InputManager.Player.P1;
+    public InputManager.Player player = InputManager.Player.P1;
 
     private float m_currentV = 0;
     private float m_currentH = 0;
