@@ -6,7 +6,8 @@ public class PickableObject : MonoBehaviour
     public enum ObjectType
     {
         iron,
-        pickaxe
+        pickaxe,
+        ironOre
     }
 
 

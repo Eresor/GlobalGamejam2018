@@ -3,55 +3,45 @@ using System.Collections.Generic;
 using Managers;
 using UnityEngine;
 
-public class MiningSlot : MonoBehaviour
+public class MiningSlot : WorkSlot
 {
     public Transform NewRocksSpawnTransform;
-    public MaterialType MiningSlotType;
+    public PickableObject.ObjectType MiningSlotType;
 
-    void OnTriggerEnter(Collider other)
+    public override bool CheckAdditionalWorkConditions(Collider other)
     {
         PlayerPickingScript pick = other.GetComponentInChildren<PlayerPickingScript>();
-        if(!pick)
-            return;
+        if (!pick)
+            return false;
 
         PickableObject pickaxe;
-        if(!pick.holdingObject || !(pickaxe = pick.holdingObject.GetComponent<PickableObject>()))
-            return;
+        if (!pick.holdingObject || !(pickaxe = pick.holdingObject.GetComponent<PickableObject>()))
+            return false;
 
-        if(pickaxe.objectType!=PickableObject.ObjectType.pickaxe)
-            return;
+        if (pickaxe.objectType != PickableObject.ObjectType.pickaxe)
+            return false;
 
-        PlayerController pc = other.GetComponent<PlayerController>();
-
-        if(!pc)
-            return;
-
-        QuickTimeEventManager.StartQuickTimeEventForPlayer((int)pc.player,transform.position,OnMiningSuccess,OnMiningFail);
+        return true;
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        QuickTimeEventManager.StopQuickTimeEventForPlayer(0);
-    }
-
-    void OnMiningSuccess()
+    public override void OnSuccess()
     {
         var newStone = Instantiate(
-            MiningSlotType == MaterialType.Iron
+            MiningSlotType == PickableObject.ObjectType.ironOre
                 ? PrefabsProvider.Instance.IronPrefab
                 : PrefabsProvider.Instance.CoalPrefab, NewRocksSpawnTransform);
-        var randPos = UnityEngine.Random.onUnitSphere;
+        var randPos = 20 * UnityEngine.Random.onUnitSphere;
         randPos.y = 0;
         newStone.transform.localPosition = randPos;
     }
-    void OnMiningFail()
+    public override void OnFail()
     {
 
     }
 }
 
-public enum MaterialType
-{
-    Iron,
-    Wood
-}
+//public enum MaterialType
+//{
+//    Iron,
+//    Wood
+//}

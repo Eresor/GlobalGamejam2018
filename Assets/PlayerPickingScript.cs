@@ -151,6 +151,7 @@ public class PlayerPickingScript : MonoBehaviour
         getObject.GetComponent<DropPlaceScript>().holdingObject = holdingObject;
 
         holdingObject.transform.position = getObject.GetComponent<DropPlaceScript>().holdingSpot.transform.position;
+        holdingObject.transform.rotation = getObject.GetComponent<DropPlaceScript>().holdingSpot.transform.rotation;
 
         holdingObject.transform.parent = getObject.transform;
 
