@@ -76,7 +76,7 @@ public class PlayerPickingScript : MonoBehaviour
 
             if (glow != null)
             {
-                glow.On();
+                glow.Off();
             }
         }
         TriggerList.Clear();
