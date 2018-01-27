@@ -178,14 +178,14 @@ public class PlayerPickingScript : MonoBehaviour
         }
 
 
-        var wood = TriggerList.FirstOrDefault(x => x.GetComponent<Wood>() != null);
-        if (wood == null)
-        {
-            return;
-        }
-        Debug.Log("znaleziono drewno");
+        //var wood = TriggerList.FirstOrDefault(x => x.GetComponent<Wood>() != null);
+        //if (wood == null)
+        //{
+        //    return;
+        //}
+        //Debug.Log("znaleziono drewno");
 
-        wood.GetComponent<Wood>().spawnedWood = null;
+        //wood.GetComponent<Wood>().spawnedWood = null;
 
 
 
@@ -265,7 +265,8 @@ public class PlayerPickingScript : MonoBehaviour
             return;
         }
 
-        if(getObject.GetComponent<LoadableObjectScript>().Type!=holdingObject.GetComponent<PickableObject>().objectType)
+        LoadableObjectScript loadableScript = getObject.GetComponent<LoadableObjectScript>();
+        if(loadableScript.Type!=PickableObject.ObjectType.any && loadableScript.Type!=holdingObject.GetComponent<PickableObject>().objectType)
             return;
 
 

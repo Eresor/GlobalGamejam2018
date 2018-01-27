@@ -39,6 +39,13 @@ public class PlayerController : MonoBehaviour
     private bool m_isGrounded;
     private List<Collider> m_collisions = new List<Collider>();
 
+    private Vector3 startPosition;
+
+    void Start()
+    {
+        startPosition = transform.position;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         ContactPoint[] contactPoints = collision.contacts;
@@ -115,6 +122,9 @@ public class PlayerController : MonoBehaviour
 
     private void DirectUpdate()
     {
+        if(InputManager.GetPlayerButtonDown(player,InputManager.Buttons.Reset))
+            transform.position = startPosition;
+
         float v = InputManager.GetPlayerAxis(player, InputManager.Axis.Vertical);
         float h = InputManager.GetPlayerAxis(player, InputManager.Axis.Horizontal);
 

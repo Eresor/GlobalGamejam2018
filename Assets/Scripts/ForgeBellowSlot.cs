@@ -6,7 +6,7 @@ public class ForgeBellowSlot : WorkSlot
 {
 
     public LoadableObjectScript OreLoad;
-    public LoadableObjectScript IronOutputLoad;
+    public DropPlaceScript IronOutputLoad;
     public Animator BellowAnimator;
     public override void OnSuccess()
     {
@@ -20,9 +20,11 @@ public class ForgeBellowSlot : WorkSlot
         Destroy(ore.gameObject);
 
         var steel = Instantiate(PrefabsProvider.Instance.SteelPrefab);
-        IronOutputLoad.objects.Add(steel);
+        //IronOutputLoad.objects.Add(steel);
+        IronOutputLoad.holdingObject = steel;
         steel.transform.SetParent(IronOutputLoad.transform);
-        steel.transform.localPosition = IronOutputLoad.holdingSpots[IronOutputLoad.objects.Count].transform.localPosition;
+        //steel.transform.localPosition = IronOutputLoad.holdingSpots[IronOutputLoad.objects.Count].transform.localPosition;
+        steel.transform.localPosition = IronOutputLoad.holdingSpot.transform.localPosition;
         steel.GetComponent<PickableObject>().alreadyUsed = false;
     }
 
