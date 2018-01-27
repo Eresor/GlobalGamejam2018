@@ -14,6 +14,8 @@ public class PlayerPickingScript : MonoBehaviour
     private GameObject collidingObject;
     private GameObject holdingObject;
 
+
+    private bool lastUpdateButtonPressed = false;
     private GameObject holdingSpot;
     private void Start()
     {
@@ -26,20 +28,26 @@ public class PlayerPickingScript : MonoBehaviour
 
     void Update()
     {
-        buttonPressed = InputManager.GetPlayerButton(playerController.player, InputManager.Buttons.B);
+        buttonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.B);
     }
 
     void FixedUpdate()
     {
-        if (buttonPressed && !isHolding)
+        if (buttonPressed && !lastUpdateButtonPressed)
         {
-            Pick();
-            buttonPressed = false;
-        }else if (buttonPressed && isHolding)
-        {
-            Drop();
-            buttonPressed = false;
+            if (!isHolding)
+            {
+                Pick();
+                buttonPressed = false;
+            }
+            else if (isHolding)
+            {
+                Drop();
+                buttonPressed = false;
+            }
         }
+
+        lastUpdateButtonPressed = buttonPressed;
     }
 
     void OnTriggerEnter(Collider other)
@@ -78,8 +86,15 @@ public class PlayerPickingScript : MonoBehaviour
 
         getObject.transform.position = holdingSpot.transform.position;
         getObject.GetComponent<Collider>().enabled = false;
-        getObject.transform.SetParent(transform.parent);
+
+        getObject.transform.parent.GetComponent<DropPlaceScript>().holdingObject = null;
+
+
+
+
+        getObject.transform.SetParent(transform);
         holdingObject = getObject.gameObject;
+
         Debug.Log("pick");
     }
 
@@ -90,7 +105,7 @@ public class PlayerPickingScript : MonoBehaviour
             return;
 
         Debug.Log("drop");
-        TriggerList.Remove(getObject);
+        
 
         if (getObject.GetComponent<DropPlaceScript>().holdingObject != null)
         {
@@ -99,6 +114,9 @@ public class PlayerPickingScript : MonoBehaviour
 
 
         isHolding = false;
+
+
+
         getObject.GetComponent<DropPlaceScript>().holdingObject = holdingObject;
 
         holdingObject.transform.position = getObject.GetComponent<DropPlaceScript>().holdingSpot.transform.position;
@@ -107,5 +125,6 @@ public class PlayerPickingScript : MonoBehaviour
 
         holdingObject.GetComponent<Collider>().enabled = true;
         holdingObject = null;
+
     }
 }
