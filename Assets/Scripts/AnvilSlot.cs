@@ -29,7 +29,12 @@ public class AnvilSlot : WorkSlot
             WoodResources.objects.RemoveAt(0);
             Destroy(wood.gameObject);
 
-            Instantiate(PrefabsProvider.Instance.PickaxePrefab, OutputPlace.holdingSpot.transform);
+            var newObj = Instantiate(PrefabsProvider.Instance.PickaxePrefab);
+            OutputPlace.holdingObject = newObj;
+            newObj.transform.SetParent(OutputPlace.holdingSpot.transform);
+            newObj.transform.localPosition = Vector3.zero;
+            newObj.transform.localEulerAngles = Vector3.zero;
+
         }
         else if (false)
         {
