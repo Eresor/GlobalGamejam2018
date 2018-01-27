@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using Managers;
+using ProgressBar;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
 
@@ -9,6 +11,8 @@ public class PlayerPickingScript : MonoBehaviour
 {
     private List<Collider> TriggerList = new List<Collider>();
 
+    public GameObject woodPrefab;
+    public GameObject woodSpawner;
 
     private PlayerController playerController;
     private GameObject collidingObject;
@@ -27,13 +31,13 @@ public class PlayerPickingScript : MonoBehaviour
     private bool isHolding = false;
 
 
-    private bool XButtonPressed = false;
-    private bool XButtonPressedLast = false;
+    private bool AButtonPressed = false;
+    private bool AButtonPressedLast = false;
 
     void Update()
     {
         BbuttonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.B);
-        XButtonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.X);
+        AButtonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.A);
 
 
 
@@ -59,12 +63,22 @@ public class PlayerPickingScript : MonoBehaviour
             }
         }
 
+        if (AButtonPressed && !AButtonPressedLast)
+        {
+            if (!isHolding)
+            {
+                Use();
+                BbuttonPressed = false;
+            }
+        }
+
+
+        
 
 
 
-
-       BlastUpdateButtonPressed = BbuttonPressed;
-       XButtonPressedLast = XButtonPressed;
+        BlastUpdateButtonPressed = BbuttonPressed;
+       AButtonPressedLast = AButtonPressed;
     }
 
     private void CheckCollisions()
@@ -72,6 +86,9 @@ public class PlayerPickingScript : MonoBehaviour
 
         for (int i = 0; i < this.TriggerList.Count; i++)
         {
+            if(!TriggerList[i])
+                continue;
+
             var glow = TriggerList[i].gameObject.GetComponent<ObjectGlow>();
 
             if (glow != null)
@@ -90,6 +107,9 @@ public class PlayerPickingScript : MonoBehaviour
 
         foreach (var other in colliders)
         {
+            if(!other)
+                continue;
+
             if (other.CompareTag("PickableObject") || other.CompareTag("DropPlace") ||
                 other.CompareTag("UsableObject") || other.CompareTag("LoadableObject"))
             {
@@ -105,15 +125,45 @@ public class PlayerPickingScript : MonoBehaviour
             }
         }
 
-
     }
+
+    private void Use()
+    {
+        var getObject = TriggerList.FirstOrDefault(x => x.GetComponent<Wood>() != null);
+        if (getObject == null)
+        {
+            return;
+        }
+        Debug.Log("znaleziono drewno");
+
+        var wood = getObject.GetComponent<Wood>();
+        if (wood.progress < 100)
+        {
+            wood.progress += 10;
+            AudioSource audio = GetComponentInParent<AudioSource>();
+            audio.Play();
+
+            if (wood.progress == 100)
+            {
+               wood.spawnedWood = Instantiate(woodSpawner, woodSpawner.transform.parent,false);
+                wood.spawnedWood.SetActive(true);
+
+            }
+
+        }
+    }
+
+
 
     private void Pick()
     {
         var getObject = TriggerList.FirstOrDefault(x => x.CompareTag("PickableObject"));
+
+        Debug.Log("picK");
         if (getObject == null)
             return;
 
+        Debug.Log("POsitive");
         if (getObject.GetComponent<PickableObject>().alreadyUsed)
         {
             return;
@@ -128,6 +178,16 @@ public class PlayerPickingScript : MonoBehaviour
         }
 
 
+        var wood = TriggerList.FirstOrDefault(x => x.GetComponent<Wood>() != null);
+        if (wood == null)
+        {
+            return;
+        }
+        Debug.Log("znaleziono drewno");
+
+        wood.GetComponent<Wood>().spawnedWood = null;
+
+
 
         TriggerList.Remove(getObject);
         isHolding = true;
@@ -138,6 +198,9 @@ public class PlayerPickingScript : MonoBehaviour
         if (getObject.transform.parent)
         {
             var dropPoint = getObject.transform.parent.GetComponent<DropPlaceScript>();
+
+            if(!dropPoint && getObject.transform.parent.parent!=null)
+                dropPoint = getObject.transform.parent.parent.GetComponent<DropPlaceScript>();
 
             if (dropPoint)
                 dropPoint.holdingObject = null;
