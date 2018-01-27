@@ -34,7 +34,9 @@ namespace Managers
 
         public static float GetPlayerAxis(Player playerNumber, Axis axis)
         {
-            return Input.GetAxis(string.Format("{0}{1}", axis, playerNumber));
+            var value = Input.GetAxis(string.Format("{0}{1}", axis, playerNumber));
+            value = (value > 0 && value < 0.1) || (value < 0 && value > -0.1) ? value : 0;
+            return value;
         }
 
         public static bool GetPlayerButton(Player playerNumber, Buttons button)
