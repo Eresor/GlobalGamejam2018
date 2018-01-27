@@ -12,7 +12,7 @@ public class PlayerPickingScript : MonoBehaviour
 
     private PlayerController playerController;
     private GameObject collidingObject;
-    private GameObject holdingObject;
+    public GameObject holdingObject;
 
 
     private bool lastUpdateButtonPressed = false;
@@ -87,10 +87,13 @@ public class PlayerPickingScript : MonoBehaviour
         getObject.transform.position = holdingSpot.transform.position;
         getObject.GetComponent<Collider>().enabled = false;
 
-        getObject.transform.parent.GetComponent<DropPlaceScript>().holdingObject = null;
+        if (getObject.transform.parent)
+        {
+            var dropPoint = getObject.transform.parent.GetComponent<DropPlaceScript>();
 
-
-
+            if (dropPoint)
+                dropPoint.holdingObject = null;
+        }
 
         getObject.transform.SetParent(transform);
         holdingObject = getObject.gameObject;

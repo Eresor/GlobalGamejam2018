@@ -14,8 +14,8 @@ public class QuickTimeEvent : MonoBehaviour
     public GameObject ButtonX;
     public GameObject ButtonY;
     public GameObject ButtonB;
+    public Transform SurroundingImage;
 
-    private Transform surroundingImage;
     private Camera camera;
     private float startTime;
     private float endTime;
@@ -38,7 +38,6 @@ public class QuickTimeEvent : MonoBehaviour
 
     private void InitDependencies()
     {
-        surroundingImage = transform.Find("SurroundingImage");
         camera = Camera.main;
     }
 
@@ -51,6 +50,11 @@ public class QuickTimeEvent : MonoBehaviour
         transform.position = position + 2 * Vector3.up;
         transform.forward = camera.transform.forward;
         NextRandomButton();
+    }
+
+    public void StopQuickTimeEvent()
+    {
+        gameObject.SetActive(false);
     }
 
     GameObject GetButtonFromEnum(InputManager.Buttons button)
@@ -70,10 +74,10 @@ public class QuickTimeEvent : MonoBehaviour
     void NextRandomButton()
     {
         SetEmissionForGem(currentButton,0f);
-        surroundingImage.transform.localScale = Vector3.one * (failSurroundingScale + maxSurroundingScale);
+        SurroundingImage.transform.localScale = Vector3.one * (failSurroundingScale + maxSurroundingScale);
         startTime = Time.time;
         endTime = startTime + timeToInput;
-        selectedButton = (InputManager.Buttons)UnityEngine.Random.Range(1,3);
+        selectedButton = (InputManager.Buttons)UnityEngine.Random.Range(1,4);
         ButtonX.SetActive(selectedButton == InputManager.Buttons.X);
         ButtonY.SetActive(selectedButton == InputManager.Buttons.Y);
         ButtonB.SetActive(selectedButton == InputManager.Buttons.B);
@@ -85,7 +89,7 @@ public class QuickTimeEvent : MonoBehaviour
     private bool startedEmissionRise;
     void Update()
     {
-        var surroundingTransformLocalScale = surroundingImage.transform.localScale.x;
+        var surroundingTransformLocalScale = SurroundingImage.transform.localScale.x;
         bool inputSuccess = InputManager.GetPlayerButtonDown((InputManager.Player) Player, selectedButton);
 
         if (surroundingTransformLocalScale < 0.3f)
@@ -101,7 +105,7 @@ public class QuickTimeEvent : MonoBehaviour
 
         if (surroundingTransformLocalScale > failSurroundingScale)
         {
-            surroundingImage.transform.localScale =
+            SurroundingImage.transform.localScale =
                 Vector3.one * (failSurroundingScale + maxSurroundingScale * (endTime - Time.time) / timeToInput);
 
         }

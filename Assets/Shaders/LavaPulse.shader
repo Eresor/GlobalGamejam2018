@@ -62,7 +62,7 @@ Shader "Custom/Standard" {
 			fixed4 ao = tex2D(_OcclusionTex, IN.uv_OcclusionTex);
 			o.Occlusion = ao;
 			o.Alpha = c.a;
-			half impulse = sin(_PulseTime * _Time[0]);
+			half impulse = 1.2 + 0.3 * cos(_PulseTime * _Time[0]);
 			o.Emission = impulse * impulse  * _Emission * _EmissionColor * tex2D(_EmissionTex, IN.uv_EmissionTex);
 		}
 	ENDCG

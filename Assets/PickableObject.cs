@@ -3,12 +3,13 @@
 public class PickableObject : MonoBehaviour
 {
 
-    enum ObjectType
+    public enum ObjectType
     {
-        iron
+        iron,
+        pickaxe
     }
 
-    [SerializeField] private ObjectType objectType = ObjectType.iron;
+    [SerializeField] public ObjectType objectType = ObjectType.iron;
 
     // Use this for initialization
     void Start () {
