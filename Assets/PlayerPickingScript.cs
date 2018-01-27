@@ -66,6 +66,13 @@ public class PlayerPickingScript : MonoBehaviour
         {
             if (other.CompareTag("PickableObject") || other.CompareTag("DropPlace") || other.CompareTag("UsableObject") || other.CompareTag("LoadableObject"))
             {
+                var glow = other.gameObject.GetComponent<ObjectGlow>();
+
+                if (glow != null)
+                {
+                    glow.On();
+                }
+
                 //add the object to the list
                 TriggerList.Add(other);
             }
@@ -79,6 +86,16 @@ public class PlayerPickingScript : MonoBehaviour
             if (other.CompareTag("PickableObject") || other.CompareTag("DropPlace") || other.CompareTag("UsableObject") || other.CompareTag("LoadableObject"))
             {
                 //add the object to the list
+
+                var glow = other.gameObject.GetComponent<ObjectGlow>();
+
+                if (glow != null)
+                {
+                    glow.Off();
+                }
+
+
+
                 TriggerList.Remove(other);
             }
         }
@@ -95,6 +112,15 @@ public class PlayerPickingScript : MonoBehaviour
         {
             return;
         }
+
+
+        var glow = getObject.gameObject.GetComponent<ObjectGlow>();
+
+        if (glow != null)
+        {
+            glow.Off();
+        }
+
 
 
         TriggerList.Remove(getObject);
