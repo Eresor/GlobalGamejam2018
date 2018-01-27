@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4658439562158968}
   - component: {fileID: 20333991552519922}
   - component: {fileID: 124045941745648846}
-  - component: {fileID: 81551817663665876}
   m_Layer: 0
   m_Name: WorldUICamera
   m_TagString: Untagged
@@ -147,13 +146,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &81551817663665876
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1728818395328682}
-  m_Enabled: 1
 --- !u!81 &81796905458429394
 AudioListener:
   m_ObjectHideFlags: 1
