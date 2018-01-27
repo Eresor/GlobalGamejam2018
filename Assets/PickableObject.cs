@@ -5,15 +5,17 @@ public class PickableObject : MonoBehaviour
 
     public enum ObjectType
     {
-        iron,
+        steel,
         pickaxe,
-        ironOre
+        ironOre,
+        wood,
+        //coal
     }
 
 
     public bool alreadyUsed = false;
 
-    [SerializeField] public ObjectType objectType = ObjectType.iron;
+    [SerializeField] public ObjectType objectType = ObjectType.steel;
 
     // Use this for initialization
     void Start () {
