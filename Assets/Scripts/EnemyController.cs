@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour {
     private bool isAttacking;
     private float countDown;
     private float deleteTime;
+    private Vector3 destination;
 
     // Use this for initialization
     void Start ()
@@ -22,6 +23,9 @@ public class EnemyController : MonoBehaviour {
         isDead = false;
         countDown = 0;
         deleteTime = 4f;
+        destination = target.position;
+        destination.x = target.position.x + UnityEngine.Random.RandomRange(-9.0f,0.0f);
+        destination.z -= 1;
     }
 
     public void onHit()
@@ -81,11 +85,27 @@ public class EnemyController : MonoBehaviour {
                 anim.SetBool("canRun", true);
                 agent.isStopped = false;
                 agent.acceleration = 8;
-                agent.SetDestination(target.position);
+                agent.SetDestination(destination);
                 anim.SetBool("getDamage", isHit);
             }
         }
-        
+
+        if (!agent.pathPending)
+        {
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                {
+                    // Done
+                    
+                    Vector3 dir = destination - transform.position;
+                    dir.z += 1;
+                    float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+                    transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+                    startAttacking();
+                }
+            }
+        }
 
         agent.updateRotation = true;
         agent.updatePosition = true;

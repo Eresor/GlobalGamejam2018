@@ -566,6 +566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4019620881297650}
   - component: {fileID: 95701015954930358}
+  - component: {fileID: 114738916673658826}
   m_Layer: 0
   m_Name: Skeleton_LightSoldier
   m_TagString: Untagged
@@ -1989,8 +1990,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1014880471511632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 250.33, y: 1.6200001, z: 247.08}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.39, y: -4.5306168e-17, z: -4.56}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4019620881297650}
   m_Father: {fileID: 0}
@@ -2238,6 +2239,17 @@ MonoBehaviour:
   target: {fileID: 0}
   agent: {fileID: 195712576570304436}
   anim: {fileID: 95701015954930358}
+--- !u!114 &114738916673658826
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411436587427320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cbd01e661953f14bb588f020263fdc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &136551648131855582
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2499,8 +2511,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 1014880471511632}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 2
-  m_Speed: 5.3
+  m_Radius: 0.8
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
