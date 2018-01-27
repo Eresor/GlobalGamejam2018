@@ -86,7 +86,7 @@ public class PlayerPickingScript : MonoBehaviour
 
 
 
-            Debug.Log(colliders.Length);
+           // Debug.Log(colliders.Length);
 
         foreach (var other in colliders)
         {
@@ -150,7 +150,7 @@ public class PlayerPickingScript : MonoBehaviour
         getObject.transform.SetParent(transform);
         holdingObject = getObject.gameObject;
 
-        Debug.Log("pick");
+        //Debug.Log("pick");
     }
 
     private void Drop()
@@ -167,7 +167,7 @@ public class PlayerPickingScript : MonoBehaviour
             return;
         }
 
-        Debug.Log("drop");
+        //Debug.Log("drop");
         
 
         if (getObject.GetComponent<DropPlaceScript>().holdingObject != null)

@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerAttackScript : MonoBehaviour
 {
     public float radius;
-    public float attackDelay;
+    public float attackDelay = 1f;
 
     private PlayerController playerController;
     private float delayCounter = 1f;
@@ -22,19 +22,24 @@ public class PlayerAttackScript : MonoBehaviour
         playerController = GetComponentInParent<PlayerController>();
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-        XButtonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.X);
+
+    // Update is called once per frame
+    void Update()
+    {
         if (delayCounter > 0)
         {
             delayCounter -= Time.deltaTime;
+        }
+        else
+        {
+            XButtonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.X);
         }
     }
     void FixedUpdate()
     {
         
-        if (XButtonPressed && !BlastUpdateButtonPressed && delayCounter <= 0) // && trzyma miecz //TODO
+        if (XButtonPressed )//&& !BlastUpdateButtonPressed && delayCounter <= 0) // && trzyma miecz //TODO
+            if(!BlastUpdateButtonPressed && delayCounter <= 0)
         {
 
             //dodaj animację //TODO
@@ -44,21 +49,24 @@ public class PlayerAttackScript : MonoBehaviour
 
             foreach (RaycastHit hit in hitTable)
             {
-                if (//hit.collider == null || hit.collider.transform == null ||
-                    //hit.collider.transform.parent == null ||
-                    hit.collider.transform.parent.gameObject == null)
-                    continue;
-                GameObject collider = hit.collider.transform.parent.gameObject;
-                if (collider.name.Equals("Skeleton_LightSoldier"))
+                if (hit.collider != null &&
+                    hit.collider.transform != null &&
+                    hit.collider.transform.parent != null
+                    )
                 {
-                    GameObject enemy = collider.transform.parent.gameObject;
-                    enemy.GetComponent<EnemyController>().onHit();
+                    GameObject collider = hit.collider.transform.parent.gameObject;
+                    if (collider.name.Equals("Skeleton_LightSoldier"))
+                    {
+                        GameObject enemy = collider.transform.parent.gameObject;
+                        enemy.GetComponent<EnemyController>().onHit();
+                    }
                 }
             }
 
-            BlastUpdateButtonPressed = XButtonPressed;
             XButtonPressed = false;
             delayCounter = attackDelay;
         }
+
+        BlastUpdateButtonPressed = XButtonPressed;
     }
 }

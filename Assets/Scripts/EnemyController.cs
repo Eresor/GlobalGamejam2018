@@ -101,7 +101,7 @@ public class EnemyController : MonoBehaviour {
         //dojdzie do celu
         if (!agent.pathPending)
         {
-            if (agent.remainingDistance <= agent.stoppingDistance)
+            if (gameObject.GetComponent<NavMeshAgent>().enabled && agent.remainingDistance <= agent.stoppingDistance)
             {
                 if (!agent.hasPath || agent.velocity.sqrMagnitude <= 1f)
                 {
@@ -113,7 +113,7 @@ public class EnemyController : MonoBehaviour {
             }
         }
 
-        if(agent.isStopped)
+        if(gameObject.GetComponent<NavMeshAgent>().enabled && agent.isStopped)
         {
             Vector3 dir = destination - transform.position;
             dir.z += 1;

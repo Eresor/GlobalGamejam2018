@@ -23,7 +23,7 @@ public class InputTestScript : MonoBehaviour {
 	            var value = InputManager.GetPlayerAxis(player, axis);
 	            if (value > 0.2 || value < -0.2)
 	            {
-	                Debug.Log(string.Format("Player {0}, Axis: {1}, Value: {2}", player, axis, value));
+	               // Debug.Log(string.Format("Player {0}, Axis: {1}, Value: {2}", player, axis, value));
 	            }          
             }
 
@@ -31,7 +31,7 @@ public class InputTestScript : MonoBehaviour {
 	        {
 	            if (InputManager.GetPlayerButton(player, button))
 	            {
-	                Debug.Log(string.Format("Player {0}, Button {1}", player, button));
+	              //  Debug.Log(string.Format("Player {0}, Button {1}", player, button));
                 }
 	        }
         }

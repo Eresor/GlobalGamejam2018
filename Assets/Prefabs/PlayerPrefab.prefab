@@ -1355,6 +1355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 10
+  attackDelay: 1
 --- !u!136 &136989574104425434
 CapsuleCollider:
   m_ObjectHideFlags: 1
