@@ -1,32 +1,17 @@
 fileFormatVersion: 2
-guid: 1e43991d0f94e654e824103260074841
-timeCreated: 1517012349
+guid: 5ee531698cf318a48bf59fbe4ecdd995
+timeCreated: 1517035011
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Base Human_L_Collarbone
-    100002: Base Human_L_Forearm
-    100004: Base Human_L_Palm
-    100006: Base Human_L_Upperarm
-    100008: Base Human_M_Ribcage
-    100010: Base Human_M_Spine_1
-    100012: Base Human_M_Spine_2
-    100014: hammer_01
-    100016: //RootNode
-    400000: Base Human_L_Collarbone
-    400002: Base Human_L_Forearm
-    400004: Base Human_L_Palm
-    400006: Base Human_L_Upperarm
-    400008: Base Human_M_Ribcage
-    400010: Base Human_M_Spine_1
-    400012: Base Human_M_Spine_2
-    400014: hammer_01
-    400016: //RootNode
-    2100000: 02 - Default
-    2300000: hammer_01
-    3300000: hammer_01
+    100000: //RootNode
+    400000: //RootNode
+    2100000: _hammer02___Default
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: hammer_01
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -101,7 +86,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
