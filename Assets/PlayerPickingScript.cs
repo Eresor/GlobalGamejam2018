@@ -72,6 +72,9 @@ public class PlayerPickingScript : MonoBehaviour
 
         for (int i = 0; i < this.TriggerList.Count; i++)
         {
+            if(!TriggerList[i])
+                continue;
+
             var glow = TriggerList[i].gameObject.GetComponent<ObjectGlow>();
 
             if (glow != null)
@@ -90,6 +93,9 @@ public class PlayerPickingScript : MonoBehaviour
 
         foreach (var other in colliders)
         {
+            if(!other)
+                continue;
+
             if (other.CompareTag("PickableObject") || other.CompareTag("DropPlace") ||
                 other.CompareTag("UsableObject") || other.CompareTag("LoadableObject"))
             {
@@ -104,7 +110,6 @@ public class PlayerPickingScript : MonoBehaviour
                 TriggerList.Add(other);
             }
         }
-
 
     }
 
@@ -138,6 +143,9 @@ public class PlayerPickingScript : MonoBehaviour
         if (getObject.transform.parent)
         {
             var dropPoint = getObject.transform.parent.GetComponent<DropPlaceScript>();
+
+            if(!dropPoint && getObject.transform.parent.parent!=null)
+                dropPoint = getObject.transform.parent.parent.GetComponent<DropPlaceScript>();
 
             if (dropPoint)
                 dropPoint.holdingObject = null;
