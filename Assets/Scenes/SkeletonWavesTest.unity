@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -5277,6 +5277,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IronPrefab: {fileID: 183930, guid: a3379e25c73475b438718766882a4df4, type: 2}
   CoalPrefab: {fileID: 0}
+  SteelPrefab: {fileID: 0}
+  PickaxePrefab: {fileID: 0}
 --- !u!4 &279265410
 Transform:
   m_ObjectHideFlags: 0
@@ -5464,6 +5466,53 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 311226826}
   m_Mesh: {fileID: 4300040, guid: 8eb58c67216ab6644992555429882f10, type: 3}
+--- !u!1001 &339184065
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4969183457025602, guid: b310f77fdfb18f14db7426f9bfdae9ff, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -5.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4969183457025602, guid: b310f77fdfb18f14db7426f9bfdae9ff, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 4969183457025602, guid: b310f77fdfb18f14db7426f9bfdae9ff, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -184.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4969183457025602, guid: b310f77fdfb18f14db7426f9bfdae9ff, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4969183457025602, guid: b310f77fdfb18f14db7426f9bfdae9ff, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4969183457025602, guid: b310f77fdfb18f14db7426f9bfdae9ff, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4969183457025602, guid: b310f77fdfb18f14db7426f9bfdae9ff, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4969183457025602, guid: b310f77fdfb18f14db7426f9bfdae9ff, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114053058999020362, guid: b310f77fdfb18f14db7426f9bfdae9ff,
+        type: 2}
+      propertyPath: enemyTarget
+      value: 
+      objectReference: {fileID: 1679836698}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b310f77fdfb18f14db7426f9bfdae9ff, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &344430709
 GameObject:
   m_ObjectHideFlags: 0
@@ -7661,6 +7710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4285554ff7a5b7b4f929b0419a6a05d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
   holdingSpots:
   - {fileID: 454473099}
   - {fileID: 441740861}
@@ -22233,56 +22283,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1299181089}
   m_Mesh: {fileID: 4300000, guid: df630bd030aa3b643a73896f27ced49f, type: 3}
---- !u!1 &1301529973
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1301529974}
-  - component: {fileID: 1301529975}
-  m_Layer: 0
-  m_Name: EnemyRespawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1301529974
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1301529973}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.1, y: 42, z: -184.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1301529975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1301529973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c13a1f470aa1754aae60141465f9c6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Z_areaDistance: 10
-  X_areaDistance: 100
-  delayBeforeFirstRespawn: 1
-  minRespawnDelay: 1
-  maxRespawnDelay: 1
-  respawnRateMultiplayer: 1
-  enemyPrefab: {fileID: 1014880471511632, guid: aa6dd64f68fcf1a469ba7313820f5027,
-    type: 2}
-  enemyTarget: {fileID: 1679836698}
-  enemyTargetWidth: 1500
 --- !u!1 &1306463578
 GameObject:
   m_ObjectHideFlags: 0
@@ -49148,6 +49148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OreLoad: {fileID: 0}
+  IronOutputLoad: {fileID: 0}
+  BellowAnimator: {fileID: 0}
 --- !u!1 &1974553706
 GameObject:
   m_ObjectHideFlags: 0
