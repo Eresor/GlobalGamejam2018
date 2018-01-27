@@ -5510,6 +5510,21 @@ Prefab:
       propertyPath: enemyTarget
       value: 
       objectReference: {fileID: 1679836698}
+    - target: {fileID: 114053058999020362, guid: b310f77fdfb18f14db7426f9bfdae9ff,
+        type: 2}
+      propertyPath: minRespawnDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114053058999020362, guid: b310f77fdfb18f14db7426f9bfdae9ff,
+        type: 2}
+      propertyPath: maxRespawnDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114053058999020362, guid: b310f77fdfb18f14db7426f9bfdae9ff,
+        type: 2}
+      propertyPath: respawnRateMultiplayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b310f77fdfb18f14db7426f9bfdae9ff, type: 2}
   m_IsPrefabParent: 0

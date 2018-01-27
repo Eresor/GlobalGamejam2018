@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour {
     public NavMeshAgent agent;
     public Animator anim;
 
+    public float HP = 3;
+
     private bool isHit;
     private bool isDead;
     private bool isAttacking;
