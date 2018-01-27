@@ -2239,6 +2239,7 @@ MonoBehaviour:
   target: {fileID: 0}
   agent: {fileID: 195712576570304436}
   anim: {fileID: 95701015954930358}
+  enemyTargetWidth: 40
 --- !u!114 &114738916673658826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2516,7 +2517,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

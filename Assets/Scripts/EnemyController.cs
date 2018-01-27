@@ -16,6 +16,8 @@ public class EnemyController : MonoBehaviour {
     private float deleteTime;
     private Vector3 destination;
 
+    public float enemyTargetWidth;
+
     // Use this for initialization
     void Start ()
     {
@@ -24,8 +26,8 @@ public class EnemyController : MonoBehaviour {
         countDown = 0;
         deleteTime = 4f;
         destination = target.position;
-        destination.x = target.position.x + UnityEngine.Random.RandomRange(-9.0f,0.0f);
-        destination.z -= 1;
+        destination.x += UnityEngine.Random.RandomRange(-enemyTargetWidth, enemyTargetWidth);
+        destination.z -= 20;
     }
 
     public void onHit()
@@ -98,17 +100,22 @@ public class EnemyController : MonoBehaviour {
         {
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
-                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                if (!agent.hasPath || agent.velocity.sqrMagnitude <= 1f)
                 {
                     // Done
-                    
-                    Vector3 dir = destination - transform.position;
-                    dir.z += 1;
-                    float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
-                    transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+
+                    agent.isStopped = true;
                     startAttacking();
                 }
             }
+        }
+
+        if(agent.isStopped)
+        {
+            Vector3 dir = destination - transform.position;
+            dir.z += 1;
+            float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
         }
 
         agent.updateRotation = true;
