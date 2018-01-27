@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerAttackScript : MonoBehaviour
 {
-    public float radius;
+    public float radius = 1f;
     public float attackDelay = 1f;
 
     private PlayerController playerController;
@@ -35,19 +35,49 @@ public class PlayerAttackScript : MonoBehaviour
             XButtonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.X);
         }
     }
+
     void FixedUpdate()
     {
-        
-        if (XButtonPressed )//&& !BlastUpdateButtonPressed && delayCounter <= 0) // && trzyma miecz //TODO
-            if(!BlastUpdateButtonPressed && delayCounter <= 0)
+
+        if (XButtonPressed)
+            // && gameObject.GetComponentInParent<PlayerPickingScript>().holdingObject.GetComponent<PickableObject>().objectType ==
+            //PickableObject.ObjectType.sword)
+            if (!BlastUpdateButtonPressed &&
+                delayCounter <= 0)
+            {
+
+                //dodaj animację //TODO
+
+                StartCoroutine(CycylicAttack());
+
+
+                XButtonPressed = false;
+                delayCounter = attackDelay;
+            }
+
+        BlastUpdateButtonPressed = XButtonPressed;
+    }
+
+    private IEnumerator CycylicAttack()
+    {
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit[] hitTable = Physics.RaycastAll(ray, radius);
+
+        HashSet<GameObject> hitSkeletons = new HashSet<GameObject>();
+        Quaternion q = Quaternion.AngleAxis(1, Vector3.up);
+        Vector3 d = transform.forward;
+
+        for (int i = 0; i < 360; i++)
         {
+            yield return new WaitForSeconds(0.002777778f);
 
-            //dodaj animację //TODO
 
-            Ray ray = new Ray(transform.position, transform.position);
-            RaycastHit[] hitTable = Physics.SphereCastAll(ray,radius);
+            d = q * d;
+            Debug.DrawRay(transform.position, d, Color.green, 5.0f);
 
-            foreach (RaycastHit hit in hitTable)
+            ray.direction=d;
+
+                    foreach (RaycastHit hit in hitTable)
             {
                 if (hit.collider != null &&
                     hit.collider.transform != null &&
@@ -58,15 +88,16 @@ public class PlayerAttackScript : MonoBehaviour
                     if (collider.name.Equals("Skeleton_LightSoldier"))
                     {
                         GameObject enemy = collider.transform.parent.gameObject;
-                        enemy.GetComponent<EnemyController>().onHit();
+                        bool dontHit = false;
+                        foreach (GameObject skeleton in hitSkeletons)
+                        {
+                            if (skeleton == enemy) dontHit = true;
+                        }
+                        if (!dontHit) enemy.GetComponent<EnemyController>().onHit();
+                        hitSkeletons.Add(enemy);
                     }
                 }
             }
-
-            XButtonPressed = false;
-            delayCounter = attackDelay;
         }
-
-        BlastUpdateButtonPressed = XButtonPressed;
     }
 }
