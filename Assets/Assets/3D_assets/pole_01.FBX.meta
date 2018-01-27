@@ -1,0 +1,162 @@
+fileFormatVersion: 2
+guid: 9f526ee84c72e7e4ba0740e78ab4607b
+timeCreated: 1517016081
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: bricks_fireplace049
+    100002: bricks_fireplace050
+    100004: bricks_fireplace051
+    100006: bricks_fireplace052
+    100008: bricks_fireplace053
+    100010: bricks_fireplace054
+    100012: bricks_fireplace055
+    100014: bricks_fireplace056
+    100016: bricks_fireplace057
+    100018: bricks_fireplace058
+    100020: bricks_fireplace059
+    100022: bricks_fireplace060
+    100024: bricks_fireplace061
+    100026: bricks_fireplace062
+    100028: //RootNode
+    400000: bricks_fireplace049
+    400002: bricks_fireplace050
+    400004: bricks_fireplace051
+    400006: bricks_fireplace052
+    400008: bricks_fireplace053
+    400010: bricks_fireplace054
+    400012: bricks_fireplace055
+    400014: bricks_fireplace056
+    400016: bricks_fireplace057
+    400018: bricks_fireplace058
+    400020: bricks_fireplace059
+    400022: bricks_fireplace060
+    400024: bricks_fireplace061
+    400026: bricks_fireplace062
+    400028: //RootNode
+    2100000: 02 - Default
+    2300000: bricks_fireplace049
+    2300002: bricks_fireplace050
+    2300004: bricks_fireplace051
+    2300006: bricks_fireplace052
+    2300008: bricks_fireplace053
+    2300010: bricks_fireplace054
+    2300012: bricks_fireplace055
+    2300014: bricks_fireplace056
+    2300016: bricks_fireplace057
+    2300018: bricks_fireplace058
+    2300020: bricks_fireplace059
+    2300022: bricks_fireplace060
+    2300024: bricks_fireplace061
+    2300026: bricks_fireplace062
+    3300000: bricks_fireplace049
+    3300002: bricks_fireplace050
+    3300004: bricks_fireplace051
+    3300006: bricks_fireplace052
+    3300008: bricks_fireplace053
+    3300010: bricks_fireplace054
+    3300012: bricks_fireplace055
+    3300014: bricks_fireplace056
+    3300016: bricks_fireplace057
+    3300018: bricks_fireplace058
+    3300020: bricks_fireplace059
+    3300022: bricks_fireplace060
+    3300024: bricks_fireplace061
+    3300026: bricks_fireplace062
+    4300000: bricks_fireplace049
+    4300002: bricks_fireplace050
+    4300004: bricks_fireplace051
+    4300006: bricks_fireplace052
+    4300008: bricks_fireplace053
+    4300010: bricks_fireplace054
+    4300012: bricks_fireplace055
+    4300014: bricks_fireplace056
+    4300016: bricks_fireplace057
+    4300018: bricks_fireplace058
+    4300020: bricks_fireplace059
+    4300022: bricks_fireplace060
+    4300024: bricks_fireplace061
+    4300026: bricks_fireplace062
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
