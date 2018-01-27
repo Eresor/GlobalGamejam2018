@@ -29,6 +29,9 @@ public class GlowPrePass : MonoBehaviour
 
 	void OnRenderImage(RenderTexture src, RenderTexture dst)
 	{
+        if(!Blurred)
+            return;
+
 		Graphics.Blit(src, dst);
 
 		Graphics.SetRenderTarget(Blurred);
