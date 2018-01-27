@@ -15,7 +15,7 @@ public class PlayerPickingScript : MonoBehaviour
     public GameObject holdingObject;
 
 
-    private bool lastUpdateButtonPressed = false;
+    private bool BlastUpdateButtonPressed = false;
     private GameObject holdingSpot;
     private void Start()
     {
@@ -23,38 +23,48 @@ public class PlayerPickingScript : MonoBehaviour
         holdingSpot = gameObject.transform.parent.Find("HoldingSpot").gameObject;
     }
 
-    private bool buttonPressed = false;
+    private bool BbuttonPressed = false;
     private bool isHolding = false;
+
+
+    private bool XButtonPressed = false;
+    private bool XButtonPressedLast = false;
 
     void Update()
     {
-        buttonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.B);
+        BbuttonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.B);
+        XButtonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.X);
     }
 
     void FixedUpdate()
     {
-        if (buttonPressed && !lastUpdateButtonPressed)
+        if (BbuttonPressed && !BlastUpdateButtonPressed)
         {
             if (!isHolding)
             {
                 Pick();
-                buttonPressed = false;
+                BbuttonPressed = false;
             }
             else if (isHolding)
             {
                 Drop();
-                buttonPressed = false;
+                BbuttonPressed = false;
             }
         }
 
-        lastUpdateButtonPressed = buttonPressed;
+
+
+
+
+       BlastUpdateButtonPressed = BbuttonPressed;
+       XButtonPressedLast = XButtonPressed;
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (!TriggerList.Contains(other))
         {
-            if (other.CompareTag("PickableObject") || other.CompareTag("DropPlace") || other.CompareTag("UsableObject"))
+            if (other.CompareTag("PickableObject") || other.CompareTag("DropPlace") || other.CompareTag("UsableObject") || other.CompareTag("LoadableObject"))
             {
                 //add the object to the list
                 TriggerList.Add(other);
@@ -66,7 +76,7 @@ public class PlayerPickingScript : MonoBehaviour
     {
         if (TriggerList.Contains(other))
         {
-            if (other.CompareTag("PickableObject") || other.CompareTag("DropPlace") || other.CompareTag("UsableObject"))
+            if (other.CompareTag("PickableObject") || other.CompareTag("DropPlace") || other.CompareTag("UsableObject") || other.CompareTag("LoadableObject"))
             {
                 //add the object to the list
                 TriggerList.Remove(other);
@@ -80,6 +90,12 @@ public class PlayerPickingScript : MonoBehaviour
         var getObject = TriggerList.FirstOrDefault(x => x.CompareTag("PickableObject"));
         if (getObject == null)
             return;
+
+        if (getObject.GetComponent<PickableObject>().alreadyUsed)
+        {
+            return;
+        }
+
 
         TriggerList.Remove(getObject);
         isHolding = true;
@@ -105,7 +121,15 @@ public class PlayerPickingScript : MonoBehaviour
     {
         var getObject = TriggerList.FirstOrDefault(x => x.CompareTag("DropPlace"));
         if (getObject == null)
+        {
+            getObject = TriggerList.FirstOrDefault(x => x.CompareTag("LoadableObject"));
+            if (getObject == null)
+            {
+                return;
+            }
+            DropToLoadable();
             return;
+        }
 
         Debug.Log("drop");
         
@@ -130,4 +154,36 @@ public class PlayerPickingScript : MonoBehaviour
         holdingObject = null;
 
     }
+
+
+    void DropToLoadable()
+    {
+        var getObject = TriggerList.FirstOrDefault(x => x.CompareTag("LoadableObject"));
+
+        if (getObject.GetComponent<LoadableObjectScript>().objects.Count >= getObject.GetComponent<LoadableObjectScript>().maxHold)
+        {
+            return;
+        }
+
+
+        isHolding = false;
+
+
+        getObject.GetComponent<LoadableObjectScript>().objects.Add(holdingObject);
+
+        holdingObject.GetComponent<PickableObject>().alreadyUsed = true;
+        holdingObject.transform.position = getObject.GetComponent<LoadableObjectScript>().holdingSpots[getObject.GetComponent<LoadableObjectScript>().objects.Count-1].transform.position;
+
+        holdingObject.transform.parent = getObject.transform;
+
+        holdingObject.GetComponent<Collider>().enabled = true;
+        holdingObject = null;
+
+
+
+        //////////// TUTAJ WYWOLA AKCJE JEZELI BEDZIE MAX PRZEDMiTów:OOOO
+
+    }
+
+
 }

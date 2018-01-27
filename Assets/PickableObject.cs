@@ -9,6 +9,9 @@ public class PickableObject : MonoBehaviour
         pickaxe
     }
 
+
+    public bool alreadyUsed = false;
+
     [SerializeField] public ObjectType objectType = ObjectType.iron;
 
     // Use this for initialization
