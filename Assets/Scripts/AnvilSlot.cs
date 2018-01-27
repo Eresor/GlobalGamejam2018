@@ -13,7 +13,7 @@ public class AnvilSlot : WorkSlot
     public override bool CheckAdditionalWorkConditions(Collider other)
     {
         return OutputType == PickableObject.ObjectType.pickaxe
-            ? WoodResources.objects.Count >= 2 && SteelResources.objects.Count >= 1
+            ? WoodResources.objects.Count >= 2
             : WoodResources.objects.Count >= 1 && SteelResources.objects.Count >= 2;
     }
 
@@ -28,10 +28,6 @@ public class AnvilSlot : WorkSlot
             wood = WoodResources.objects[0];
             WoodResources.objects.RemoveAt(0);
             Destroy(wood.gameObject);
-
-            var steel = SteelResources.objects[0];
-            SteelResources.objects.RemoveAt(0);
-            Destroy(steel.gameObject);
 
             Instantiate(PrefabsProvider.Instance.PickaxePrefab, OutputPlace.holdingSpot.transform);
         }
