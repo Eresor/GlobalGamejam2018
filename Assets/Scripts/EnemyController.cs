@@ -63,6 +63,7 @@ public class EnemyController : MonoBehaviour {
         }
         else
         {
+            //getting hit
             if (isHit)
             {
                 countDown = 0.9f;
@@ -73,6 +74,7 @@ public class EnemyController : MonoBehaviour {
                 anim.SetBool("attack", isAttacking);
             }
 
+            //being hit annimation and stop movement
             if (countDown > 0)
             {
                 agent.isStopped = true;
@@ -81,6 +83,7 @@ public class EnemyController : MonoBehaviour {
                 isHit = false;
             }
             else
+            //after taking dmg
             {
                 anim.SetBool("canRun", true);
                 agent.isStopped = false;
@@ -90,6 +93,7 @@ public class EnemyController : MonoBehaviour {
             }
         }
 
+        //dojdzie do celu
         if (!agent.pathPending)
         {
             if (agent.remainingDistance <= agent.stoppingDistance)
