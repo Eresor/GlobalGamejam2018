@@ -21,12 +21,17 @@ GameObject:
   - component: {fileID: 4771616987983236}
   - component: {fileID: 33368561031685534}
   - component: {fileID: 23523995673925804}
+<<<<<<< HEAD
+  - component: {fileID: 114771606231075506}
   m_Layer: 0
+=======
+  m_Layer: 10
+>>>>>>> 68282718fb5e57a1d1d46660cc58fade9e42063e
   m_Name: pCylinder1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!1 &1611334507313644
 GameObject:
@@ -38,12 +43,12 @@ GameObject:
   - component: {fileID: 4508924658081414}
   - component: {fileID: 135121034843393314}
   - component: {fileID: 114988338083184794}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: pickaxe
   m_TagString: PickableObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!1 &1733276064440930
 GameObject:
@@ -55,12 +60,17 @@ GameObject:
   - component: {fileID: 4357426404264412}
   - component: {fileID: 33772352896020398}
   - component: {fileID: 23448744256845804}
+<<<<<<< HEAD
+  - component: {fileID: 114398376249162852}
   m_Layer: 0
+=======
+  m_Layer: 10
+>>>>>>> 68282718fb5e57a1d1d46660cc58fade9e42063e
   m_Name: pCube1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &4357426404264412
 Transform:
@@ -117,7 +127,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100002, guid: bcd3ddc06ec9fed4eab87ce799e17dbc, type: 3}
+  - {fileID: 2100000, guid: 77d542dd1ce55b641b4cad73adf402c5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,7 +161,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: bcd3ddc06ec9fed4eab87ce799e17dbc, type: 3}
+  - {fileID: 2100000, guid: 88dede8a5b73e56449f12991e0e7fb2c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -185,6 +195,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1733276064440930}
   m_Mesh: {fileID: 4300002, guid: bcd3ddc06ec9fed4eab87ce799e17dbc, type: 3}
+--- !u!114 &114398376249162852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1733276064440930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowColor: {r: 1, g: 1, b: 1, a: 0}
+  LerpFactor: 10
+--- !u!114 &114771606231075506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1597276275503310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8ec0fb3ff2a5454e8863609a58514d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowColor: {r: 1, g: 1, b: 1, a: 0}
+  LerpFactor: 10
 --- !u!114 &114988338083184794
 MonoBehaviour:
   m_ObjectHideFlags: 1

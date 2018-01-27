@@ -34,10 +34,17 @@ public class PlayerPickingScript : MonoBehaviour
     {
         BbuttonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.B);
         XButtonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.X);
+
+
+
     }
 
     void FixedUpdate()
     {
+
+
+        CheckCollisions();
+
         if (BbuttonPressed && !BlastUpdateButtonPressed)
         {
             if (!isHolding)
@@ -60,30 +67,46 @@ public class PlayerPickingScript : MonoBehaviour
        XButtonPressedLast = XButtonPressed;
     }
 
-    void OnTriggerEnter(Collider other)
+    private void CheckCollisions()
     {
-        if (!TriggerList.Contains(other))
+
+        for (int i = 0; i < this.TriggerList.Count; i++)
         {
-            if (other.CompareTag("PickableObject") || other.CompareTag("DropPlace") || other.CompareTag("UsableObject") || other.CompareTag("LoadableObject"))
+            var glow = TriggerList[i].gameObject.GetComponent<ObjectGlow>();
+
+            if (glow != null)
             {
+                glow.On();
+            }
+        }
+        TriggerList.Clear();
+
+
+            var colliders = Physics.OverlapSphere(transform.position, 7 ,1<<10);
+
+
+
+            Debug.Log(colliders.Length);
+
+        foreach (var other in colliders)
+        {
+            if (other.CompareTag("PickableObject") || other.CompareTag("DropPlace") ||
+                other.CompareTag("UsableObject") || other.CompareTag("LoadableObject"))
+            {
+                var glow = other.gameObject.GetComponent<ObjectGlow>();
+
+                if (glow != null)
+                {
+                    glow.On();
+                }
+
                 //add the object to the list
                 TriggerList.Add(other);
             }
         }
-    }
 
-    void OnTriggerExit(Collider other)
-    {
-        if (TriggerList.Contains(other))
-        {
-            if (other.CompareTag("PickableObject") || other.CompareTag("DropPlace") || other.CompareTag("UsableObject") || other.CompareTag("LoadableObject"))
-            {
-                //add the object to the list
-                TriggerList.Remove(other);
-            }
-        }
-    }
 
+    }
 
     private void Pick()
     {
@@ -95,6 +118,15 @@ public class PlayerPickingScript : MonoBehaviour
         {
             return;
         }
+
+
+        var glow = getObject.gameObject.GetComponent<ObjectGlow>();
+
+        if (glow != null)
+        {
+            glow.Off();
+        }
+
 
 
         TriggerList.Remove(getObject);
