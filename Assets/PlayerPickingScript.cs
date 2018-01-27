@@ -170,6 +170,9 @@ public class PlayerPickingScript : MonoBehaviour
             return;
         }
 
+        if(getObject.GetComponent<LoadableObjectScript>().Type!=holdingObject.GetComponent<PickableObject>().objectType)
+            return;
+
 
         isHolding = false;
 
