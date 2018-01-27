@@ -17725,6 +17725,21 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 1679836699}
+    - target: {fileID: 136551648131855582, guid: aa6dd64f68fcf1a469ba7313820f5027,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 136364498959407722, guid: aa6dd64f68fcf1a469ba7313820f5027,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 136551648131855582, guid: aa6dd64f68fcf1a469ba7313820f5027,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa6dd64f68fcf1a469ba7313820f5027, type: 2}
   m_IsPrefabParent: 0
@@ -25322,8 +25337,9 @@ MonoBehaviour:
   minRespawnDelay: 20
   maxRespawnDelay: 30
   respawnRateMultiplayer: 0.9
-  enemyPrefab: {fileID: 0}
-  enemyTarget: {fileID: 0}
+  enemyPrefab: {fileID: 1014880471511632, guid: aa6dd64f68fcf1a469ba7313820f5027,
+    type: 2}
+  enemyTarget: {fileID: 1679836698}
 --- !u!1 &1302815420
 GameObject:
   m_ObjectHideFlags: 0
@@ -28022,23 +28038,6 @@ Prefab:
     - target: {fileID: 4817831047141378, guid: 01bc973df2a872f4ba646fd139ac30c2, type: 2}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4817831047141378, guid: 01bc973df2a872f4ba646fd139ac30c2, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4817831047141378, guid: 01bc973df2a872f4ba646fd139ac30c2, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4817831047141378, guid: 01bc973df2a872f4ba646fd139ac30c2, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114045097724507928, guid: 01bc973df2a872f4ba646fd139ac30c2,
-        type: 2}
-      propertyPath: m_moveSpeed
-      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01bc973df2a872f4ba646fd139ac30c2, type: 2}

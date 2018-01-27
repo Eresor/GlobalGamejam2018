@@ -15,8 +15,8 @@ public class gateScript : MonoBehaviour {
 
     void Update ()
     {
-        if (gateHP < 0)
-            Destroy(gameObject);
+        //if (gateHP < 0)
+            //START ANIMATION AND END GAME;
     }
     public static void hitGate()
     {

@@ -36,6 +36,7 @@ public class EnemyController : MonoBehaviour {
     {
         isHit = true;
         anim.SetBool("getDamage", isHit);
+        HP--;
     }
 
     public void onDeath()
@@ -118,6 +119,11 @@ public class EnemyController : MonoBehaviour {
             dir.z += 1;
             float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+        }
+
+        if (HP <= 0)
+        {
+            onDeath();
         }
 
         agent.updateRotation = true;
