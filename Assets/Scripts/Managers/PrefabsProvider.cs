@@ -15,5 +15,6 @@ public class PrefabsProvider : MonoBehaviour
     public GameObject CoalPrefab;
     public GameObject SteelPrefab;
     public GameObject PickaxePrefab;
+    public GameObject SwordPrefab;
 
 }

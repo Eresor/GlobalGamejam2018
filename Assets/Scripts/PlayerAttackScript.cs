@@ -74,6 +74,7 @@ public class PlayerAttackScript : MonoBehaviour
                 yield return null;
                 d = q * d;
                 sword.transform.localRotation = sword.transform.localRotation * qsword;
+
                 //Debug.DrawRay(transform.position, d * radius, Color.green, 5.0f);
                 //RaycastHit[] hitTable = Physics.RaycastAll(ray, radius);
                 //ray = new Ray(transform.position, transform.forward);

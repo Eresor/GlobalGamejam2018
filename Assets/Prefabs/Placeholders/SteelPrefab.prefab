@@ -25,7 +25,8 @@ GameObject:
   - component: {fileID: 65753456679899416}
   - component: {fileID: 65820622165675100}
   - component: {fileID: 114580153850434762}
-  m_Layer: 0
+  - component: {fileID: 114721505961049888}
+  m_Layer: 10
   m_Name: SteelPrefab
   m_TagString: PickableObject
   m_Icon: {fileID: 0}
@@ -39,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1107666996474810}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 12.242889, y: 67.6, z: 28.73}
+  m_LocalPosition: {x: -3.3965912, y: 41.49727, z: 39.60292}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -59,7 +60,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 442f6cf78722b95489f2cb0741686ef7, type: 3}
+  - {fileID: 2100000, guid: 14f92d16670e6fd4bb484e9ffb647299, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,3 +141,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alreadyUsed: 0
   objectType: 0
+--- !u!114 &114721505961049888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1107666996474810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e13a429fbe061249ab3da241c301628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowColor: {r: 1, g: 1, b: 1, a: 1}
+  LerpFactor: 10

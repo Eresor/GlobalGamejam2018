@@ -36,7 +36,7 @@ public class AnvilSlot : WorkSlot
             newObj.transform.localEulerAngles = Vector3.zero;
 
         }
-        else if (false)
+        else if (OutputType == PickableObject.ObjectType.sword)
         {
             var wood = WoodResources.objects[0];
             WoodResources.objects.RemoveAt(0);
@@ -49,6 +49,13 @@ public class AnvilSlot : WorkSlot
             steel = SteelResources.objects[0];
             SteelResources.objects.RemoveAt(0);
             Destroy(steel.gameObject);
+
+
+            var newObj = Instantiate(PrefabsProvider.Instance.SwordPrefab);
+            OutputPlace.holdingObject = newObj;
+            newObj.transform.SetParent(OutputPlace.holdingSpot.transform);
+            newObj.transform.localPosition = Vector3.zero;
+            newObj.transform.localEulerAngles = Vector3.zero;
         }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SwordCollisionAttack : MonoBehaviour
 {
+    public int Durability = 100;
     void OnCollisionEnter(Collision col)
     {
         var other = col.collider;
@@ -15,7 +16,14 @@ public class SwordCollisionAttack : MonoBehaviour
         if (!enemy)
             return;
 
+        --Durability;
+
         enemy.onHit();
+
+        if(Durability>0)
+            return;
+
+        Destroy(transform.parent.gameObject);
     }
 
 }

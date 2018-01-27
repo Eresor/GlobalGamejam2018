@@ -36,10 +36,10 @@ GameObject:
   - component: {fileID: 4933369917419934}
   - component: {fileID: 33549983677856982}
   - component: {fileID: 23574028581847832}
-  - component: {fileID: 95548936045086654}
   - component: {fileID: 65598421039087824}
   - component: {fileID: 65429734424750806}
   - component: {fileID: 114651063549665356}
+  - component: {fileID: 114941736956932750}
   m_Layer: 10
   m_Name: LoadableTable
   m_TagString: DropPlace
@@ -66,14 +66,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1909697859222872}
-  m_LocalRotation: {x: 0.38216263, y: 0.59493864, z: 0.5949386, w: -0.3821622}
-  m_LocalPosition: {x: 20.478819, y: 3.1000066, z: -0.97282785}
-  m_LocalScale: {x: 6.440398, y: 6.440401, z: 6.440401}
+  m_LocalRotation: {x: -0.69091475, y: -0.15045534, z: -0.15045534, w: 0.69091475}
+  m_LocalPosition: {x: 13.864748, y: 3.0999985, z: -18.708982}
+  m_LocalScale: {x: 6.4403944, y: 6.440402, z: 6.440402}
   m_Children:
   - {fileID: 4581421805537180}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23574028581847832
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -125,7 +125,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 3.14, z: 3}
+  m_Size: {x: 3.53, y: 2.22, z: 3}
   m_Center: {x: 0.00000047683716, y: 0, z: 0.00000047683716}
 --- !u!65 &65598421039087824
 BoxCollider:
@@ -139,23 +139,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.8104247, y: 2, z: 1.2067215}
   m_Center: {x: 0.00000047683716, y: 0, z: 0.00000047683716}
---- !u!95 &95548936045086654
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1909697859222872}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: ff726da965f4049449cd59d18d097d81, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114651063549665356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -169,3 +152,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holdingObject: {fileID: 0}
   holdingSpot: {fileID: 1483409167458224}
+--- !u!114 &114941736956932750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1909697859222872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a8413fd939e8bc4f964e0cafb36614a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  holdingObject: {fileID: 0}
+  holdingSpot: {fileID: 0}

@@ -10,7 +10,10 @@ public class WorkSlot : MonoBehaviour {
 
         PlayerController pc = other.GetComponent<PlayerController>();
 
-        if (!pc)
+        if (!pc && other.transform.parent)
+            pc = other.transform.parent.GetComponent<PlayerController>();
+
+        if(!pc)
             return;
 
         if(!CheckAdditionalWorkConditions(other))
