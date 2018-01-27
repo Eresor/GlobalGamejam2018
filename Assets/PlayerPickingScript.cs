@@ -111,6 +111,10 @@ public class PlayerPickingScript : MonoBehaviour
                 dropPoint.holdingObject = null;
         }
 
+        var rb = getObject.GetComponent<Rigidbody>();
+        if (rb)
+            rb.isKinematic = true;
+
         getObject.transform.SetParent(transform);
         holdingObject = getObject.gameObject;
 

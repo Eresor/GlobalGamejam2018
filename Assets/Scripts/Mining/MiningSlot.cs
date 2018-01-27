@@ -40,7 +40,9 @@ public class MiningSlot : MonoBehaviour
             MiningSlotType == MaterialType.Iron
                 ? PrefabsProvider.Instance.IronPrefab
                 : PrefabsProvider.Instance.CoalPrefab, NewRocksSpawnTransform);
-        newStone.transform.localPosition = UnityEngine.Random.onUnitSphere;
+        var randPos = UnityEngine.Random.onUnitSphere;
+        randPos.y = 0;
+        newStone.transform.localPosition = randPos;
     }
     void OnMiningFail()
     {
