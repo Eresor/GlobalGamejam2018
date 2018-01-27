@@ -126,7 +126,7 @@ public class QuickTimeEvent : MonoBehaviour
 
         foreach (var material in materials)
         {
-            material.SetFloat("_Emission", Mathf.Min(1f, emission));
+            material.SetFloat("_Emission", Mathf.Clamp(emission,0.15f, 1f));
         }
     }
 
