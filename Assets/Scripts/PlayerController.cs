@@ -145,6 +145,7 @@ public class PlayerController : MonoBehaviour
             m_animator.SetFloat("MoveSpeed", direction.magnitude);
         }
 
+        return;
         JumpingAndLanding();
     }
 
