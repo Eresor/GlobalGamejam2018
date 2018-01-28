@@ -8,9 +8,17 @@ public class ForgeBellowSlot : WorkSlot
     public LoadableObjectScript OreLoad;
     public DropPlaceScript IronOutputLoad;
     public Animator BellowAnimator;
+    private int bump;
+
     public override void OnSuccess()
     {
-        BellowAnimator.SetBool("DoWork",true);
+        BellowAnimator.SetBool("DoWork", true);
+
+        ++bump;
+        if(bump < 4)
+            return;
+
+        bump = 0;
 
         if(OreLoad.objects.Count == 0)
             return;

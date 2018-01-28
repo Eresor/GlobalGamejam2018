@@ -74,10 +74,8 @@ public class PlayerAttackScript : MonoBehaviour
                 yield return null;
                 d = q * d;
                 if (sword == null)
-                {
-                    sword.transform.localEulerAngles = Vector3.zero;
                     yield break;
-                }
+
                 sword.transform.localRotation = sword.transform.localRotation * qsword;
                 //var swordPos = sword.transform.position;
                 //swordPos.y = Mathf.Lerp(swordPos.y, 50f, Time.deltaTime);

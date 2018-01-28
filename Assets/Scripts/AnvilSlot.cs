@@ -12,6 +12,7 @@ public class AnvilSlot : WorkSlot
 
     public AudioClip clip;
     private AudioSource audioSource;
+    private int anvilBump;
 
     void Start()
     {
@@ -27,6 +28,11 @@ public class AnvilSlot : WorkSlot
 
     public override void OnSuccess()
     {
+        ++anvilBump;
+        if(anvilBump < 4)
+            return;
+
+        anvilBump = 0;
         if (OutputType == PickableObject.ObjectType.pickaxe)
         {
             var wood = WoodResources.objects[0];

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorkSlot : MonoBehaviour {
-
+public class WorkSlot : MonoBehaviour
+{
 
     void OnTriggerEnter(Collider other)
     {

@@ -219,7 +219,7 @@ public class PlayerPickingScript : MonoBehaviour
 
         getObject.transform.SetParent(transform);
         getObject.transform.localEulerAngles = Vector3.zero;
-        getObject.transform.localPosition = Vector3.zero;
+        getObject.transform.localPosition = 0.5f * Vector3.up;
         holdingObject = getObject.gameObject;
         getObject.GetComponent<PickableObject>().Pick();
         //Debug.Log("pick");
