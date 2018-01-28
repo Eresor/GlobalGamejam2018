@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 790dbec9fd5989249b1824fb004a0189, type: 3}
-  Durability: 100
+  Durability: 70
 --- !u!198 &198578804958462750
 ParticleSystem:
   m_ObjectHideFlags: 1

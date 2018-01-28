@@ -193,6 +193,7 @@ public class PlayerPickingScript : MonoBehaviour
         Debug.Log("POsitive");
         if (getObject.GetComponent<PickableObject>().alreadyUsed)
         {
+            Debug.Log(getObject.name);
             return;
         }
 
