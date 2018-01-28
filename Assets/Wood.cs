@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ProgressBar;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Wood : MonoBehaviour
 {
@@ -18,16 +19,18 @@ public class Wood : MonoBehaviour
 
     public void AddProgress()
     {
-        if (timer >= 1)
-        {
-            var getRandomProcess = Random.Range(5, 15);
-            progress += getRandomProcess;
-            timer = 0;
-        }
+
+           // var getRandomProcess = Random.Range(5, 15);
+            progress += 1f;
+
 
     }
 
-    public Animator AxeMineAnimator;
+    public GameObject blinking;
+
+
+
+public Animator AxeMineAnimator;
     public Transform NewRocksSpawnTransform;
     public PickableObject.ObjectType MiningSlotType;
 
@@ -52,18 +55,40 @@ public class Wood : MonoBehaviour
         newStone.transform.localPosition = randPos;
     }
 
+    private float alpha = 200f;
     // Update is called once per frame
     void Update () {
 
-        if (timer < 5)
+        /*
+
+        timer += Time.deltaTime;
+        Debug.Log(timer);
+        var color = blinking.GetComponent<Image>().color;
+
+        if (timer >= 1.0)
         {
-            timer += Time.deltaTime;
+            
+            timer = 0;
+
+            Debug.Log("jeden");
+            blinking.GetComponent<Image>().color = new Color(color.r, color.g, color.b, 150);
+
+
         }
+        else
+        {
+            blinking.GetComponent<Image>().color = new Color(color.r, color.g, color.b, 255);
+            Debug.Log("dwa");
+        }
+        */
 
-	    
-      //  Debug.Log(timer);
 
-	    if (progress == 0.0f )
+
+
+
+        //  Debug.Log(timer);
+
+        if (progress == 0.0f )
 	    {
 	        visibleObject.SetActive(false);
 	        axeIcon.SetActive(true);
