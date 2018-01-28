@@ -218,6 +218,8 @@ public class PlayerPickingScript : MonoBehaviour
             rb.isKinematic = true;
 
         getObject.transform.SetParent(transform);
+        getObject.transform.localEulerAngles = Vector3.zero;
+        getObject.transform.localPosition = Vector3.zero;
         holdingObject = getObject.gameObject;
         getObject.GetComponent<PickableObject>().Pick();
         //Debug.Log("pick");
