@@ -7,10 +7,17 @@ public class SwordCollisionAttack : MonoBehaviour
 {
     public AudioClip clip;
     private AudioSource audioSource;
+    private TrailRenderer trail;
     public int Durability = 100;
+    private float maxDur;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        trail = GetComponentInChildren<TrailRenderer>();
+        maxDur = Durability;
+        var grad = trail.colorGradient;
+        grad.colorKeys = new GradientColorKey[] { new GradientColorKey(Color.green, 0f) };
+        trail.colorGradient = grad;
     }
     void OnCollisionEnter(Collision col)
     {
@@ -32,11 +39,14 @@ public class SwordCollisionAttack : MonoBehaviour
 
         audioSource.PlayOneShot(clip);
 
+        var grad = trail.colorGradient;
+        grad.colorKeys = new GradientColorKey[] { new GradientColorKey(Color.Lerp(Color.red, Color.green, Durability / maxDur), 0f) };
+        trail.colorGradient = grad;
+
         if (Durability>0)
             return;
 
         GetComponentInParent<PlayerPickingScript>().DestroyPick();
-
     }
 
 }
