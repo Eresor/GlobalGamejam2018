@@ -255,8 +255,10 @@ public class PlayerPickingScript : MonoBehaviour
 
         holdingObject.transform.parent = getObject.transform;
 
+        holdingObject.GetComponent<PickableObject>().Drop();
         holdingObject.GetComponent<Collider>().enabled = true;
         holdingObject = null;
+        
 
     }
 
@@ -286,6 +288,7 @@ public class PlayerPickingScript : MonoBehaviour
 
             holdingObject.transform.parent = getObject.transform;
 
+            holdingObject.GetComponent<PickableObject>().Drop();
             holdingObject.GetComponent<Collider>().enabled = true;
             holdingObject = null;
             break;

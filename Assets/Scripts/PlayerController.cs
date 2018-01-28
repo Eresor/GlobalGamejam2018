@@ -41,9 +41,13 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 startPosition;
 
+    private AudioSource audioSource;
+    public AudioClip FootStep_clip;
+
     void Start()
     {
         startPosition = transform.position;
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -178,5 +182,10 @@ public class PlayerController : MonoBehaviour
         {
             m_animator.SetTrigger("Jump");
         }
+    }
+
+    public void FootStep()
+    {
+        audioSource.PlayOneShot(FootStep_clip);
     }
 }
