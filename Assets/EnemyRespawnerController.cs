@@ -10,6 +10,7 @@ public class EnemyRespawnerController : MonoBehaviour {
     public float minRespawnDelay = 7;
     public float maxRespawnDelay = 7;
     public float respawnRateMultiplayer = 0.97f;
+    public float respawnSubTime = 0.1f;
     public GameObject enemyPrefab;
     public GameObject enemyTarget;
     //public float enemyTargetWidth = 15;
@@ -32,35 +33,40 @@ public class EnemyRespawnerController : MonoBehaviour {
             delayBeforeFirstRespawn = 3;
             minRespawnDelay = 8;
             maxRespawnDelay = 10;
-            respawnRateMultiplayer = 0.9999f;
+            //respawnRateMultiplayer = 0.9999f;
+            respawnSubTime = 0.1f;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             delayBeforeFirstRespawn = 3;
             minRespawnDelay = 2;
             maxRespawnDelay = 5;
-            respawnRateMultiplayer = 0.999f;
+            //respawnRateMultiplayer = 0.999f;
+            respawnSubTime = 0.1f;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             delayBeforeFirstRespawn = 3;
             minRespawnDelay = 0.8f;
             maxRespawnDelay = 2.5f;
-            respawnRateMultiplayer = 0.999f;
+            //respawnRateMultiplayer = 0.999f;
+            respawnSubTime = 0.05f;
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             delayBeforeFirstRespawn = 3;
-            minRespawnDelay = 0;
+            minRespawnDelay = 0.3f;
             maxRespawnDelay = 2;
-            respawnRateMultiplayer = 0.998f;
+            //respawnRateMultiplayer = 0.998f;
+            respawnSubTime = 0.05f;
         }
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             delayBeforeFirstRespawn = 0;
-            minRespawnDelay = 0;
-            maxRespawnDelay = 0;
-            respawnRateMultiplayer = 1f;
+            minRespawnDelay = 0.08f;
+            maxRespawnDelay = 0.1f;
+            //respawnRateMultiplayer = 1f;
+            respawnSubTime = 0.0f;
         }
     }
 	
@@ -96,8 +102,16 @@ public class EnemyRespawnerController : MonoBehaviour {
 
             //enemyTargetTransform.position -= targetRandomWidthPoint;
 
-            minRespawnDelay *= respawnRateMultiplayer;
-            maxRespawnDelay *= respawnRateMultiplayer;
+            //minRespawnDelay *= respawnRateMultiplayer;
+            //maxRespawnDelay *= respawnRateMultiplayer;
+            if (minRespawnDelay > 0.5)
+            {
+                minRespawnDelay -= respawnSubTime;
+            }
+            if (maxRespawnDelay > 1)
+            {
+                maxRespawnDelay -= respawnSubTime;
+            }
             isEnemyReady = false;
         }
 	}
