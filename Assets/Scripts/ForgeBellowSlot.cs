@@ -10,6 +10,22 @@ public class ForgeBellowSlot : WorkSlot
     public Animator BellowAnimator;
     private int bump;
 
+    private AudioSource audioSource;
+    public AudioClip pumpDownClip, pumpUpClip;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+    void PumpDown()
+    {
+        audioSource.PlayOneShot(pumpDownClip);
+    }
+    void PumpUp()
+    {
+        audioSource.PlayOneShot(pumpUpClip);
+    }
+
     public override void OnSuccess()
     {
         BellowAnimator.SetBool("DoWork", true);
