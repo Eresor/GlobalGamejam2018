@@ -8,6 +8,7 @@ public class MiningSlot : WorkSlot
     public Animator AxeMineAnimator;
     public Transform NewRocksSpawnTransform;
     public PickableObject.ObjectType MiningSlotType;
+    private int pickBumber = 0;
 
     public override bool CheckAdditionalWorkConditions(Collider other)
     {
@@ -27,6 +28,12 @@ public class MiningSlot : WorkSlot
 
     public override void OnSuccess()
     {
+        ++pickBumber;
+
+        if(pickBumber < 4)
+            return;
+
+        pickBumber = 0;
         var newStone = Instantiate(
             MiningSlotType == PickableObject.ObjectType.ironOre
                 ? PrefabsProvider.Instance.IronPrefab
