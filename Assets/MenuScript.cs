@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Managers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
 {
@@ -36,9 +37,14 @@ public class MenuScript : MonoBehaviour
         var isPressed = InputManager.GetPlayerButtonDown(InputManager.Player.P1, InputManager.Buttons.A);
 
 
-
-
-        if (!wasPressed && isPressed && startChosen && !tutorial)
+	    if (!wasPressed && isPressed && startChosen && !tutorial && tutorialx == null )
+	    {
+            Debug.Log("endgame");
+	        SceneManager.LoadScene(1);
+	        Time.timeScale = 1;
+        }
+        else 
+        if (!wasPressed && isPressed && startChosen && !tutorial && tutorialx !=null)
 	    {
 	        tutorialx.SetActive(true);
 	        tutorial = true;
