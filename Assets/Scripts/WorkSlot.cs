@@ -30,7 +30,16 @@ public class WorkSlot : MonoBehaviour {
     void OnTriggerExit(Collider other)
     {
         OnFail();
-        QuickTimeEventManager.StopQuickTimeEventForPlayer(0);
+
+        PlayerController pc = other.GetComponent<PlayerController>();
+
+        if (!pc && other.transform.parent)
+            pc = other.transform.parent.GetComponent<PlayerController>();
+
+        if (!pc)
+            return;
+
+        QuickTimeEventManager.StopQuickTimeEventForPlayer((int)pc.player);
     }
 
     public virtual void OnSuccess()

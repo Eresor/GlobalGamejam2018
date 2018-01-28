@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GlowColor: {r: 1, g: 1, b: 1, a: 1}
-  LerpFactor: 10
+  LerpFactor: 50
 --- !u!114 &114950586212490212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -250,6 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117afabf4b9707e438ba52170b818f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Durability: 10
 --- !u!198 &198578804958462750
 ParticleSystem:
   m_ObjectHideFlags: 1
