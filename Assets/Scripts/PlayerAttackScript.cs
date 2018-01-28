@@ -64,9 +64,9 @@ public class PlayerAttackScript : MonoBehaviour
             Ray ray = new Ray(transform.position, transform.forward);
 
             HashSet<GameObject> hitSkeletons = new HashSet<GameObject>();
-            float anglesPerFrame = 10f;
+            float anglesPerFrame = 20f;
             Quaternion q = Quaternion.AngleAxis(anglesPerFrame, Vector3.up);
-            Quaternion qsword = Quaternion.AngleAxis(anglesPerFrame, Vector3.forward);
+            Quaternion qsword = Quaternion.AngleAxis(-anglesPerFrame, Vector3.up);
             Vector3 d = playerController.transform.forward;
 
             for (float i = 0; i < 360; i += anglesPerFrame)
@@ -76,7 +76,9 @@ public class PlayerAttackScript : MonoBehaviour
                 if(sword==null)
                     yield break;    
                 sword.transform.localRotation = sword.transform.localRotation * qsword;
-
+                //var swordPos = sword.transform.position;
+                //swordPos.y = Mathf.Lerp(swordPos.y, 50f, Time.deltaTime);
+                //sword.transform.position = swordPos;
                 //Debug.DrawRay(transform.position, d * radius, Color.green, 5.0f);
                 //RaycastHit[] hitTable = Physics.RaycastAll(ray, radius);
                 //ray = new Ray(transform.position, transform.forward);
