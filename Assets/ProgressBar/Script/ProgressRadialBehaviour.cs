@@ -4,12 +4,14 @@ using UnityEngine.UI;
 
 namespace ProgressBar
 {
+
     /// <summary>
     /// This Script is directed at radially progressing designs.
     /// </summary>
     [RequireComponent(typeof(Image))]
     public class ProgressRadialBehaviour : MonoBehaviour, IIncrementable, IDecrementable
     {
+        public GameObject wow;
         /// <summary>
         /// This script's Filler is its own Image component
         /// </summary>
@@ -81,8 +83,16 @@ namespace ProgressBar
             SetFillerSize(0);
         }
 
-        void Update()
+        public float alpha = 200;
+
+
+
+    void Update()
         {
+
+
+
+
             //If theses two values aren't equals this means m_Value has been updated and the animation needs to start.
             if (TransitoryValue != m_Value)
             {
