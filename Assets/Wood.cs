@@ -14,30 +14,73 @@ public class Wood : MonoBehaviour
 
     public GameObject spawnedWood = null;
 
-	// Update is called once per frame
-	void Update () {
+    float timer= 0.0f;
 
-	    if (progress == 0.00f && spawnedWood == null)
+    public void AddProgress()
+    {
+        if (timer >= 1)
+        {
+            var getRandomProcess = Random.Range(5, 15);
+            progress += getRandomProcess;
+            timer = 0;
+        }
+
+    }
+
+    public Animator AxeMineAnimator;
+    public Transform NewRocksSpawnTransform;
+    public PickableObject.ObjectType MiningSlotType;
+
+    public void SpawnWood()
+    {
+        var newStone = Instantiate(PrefabsProvider.Instance.WoodPrefab, NewRocksSpawnTransform);
+        var randPos = 20 * UnityEngine.Random.onUnitSphere;
+        randPos.y = 0;
+        newStone.transform.localPosition = randPos;
+        newStone.SetActive(true);
+    }
+
+
+    public void OnSuccess()
+    {
+        var newStone = Instantiate(
+            MiningSlotType == PickableObject.ObjectType.ironOre
+                ? PrefabsProvider.Instance.IronPrefab
+                : PrefabsProvider.Instance.CoalPrefab, NewRocksSpawnTransform);
+        var randPos = 20 * UnityEngine.Random.onUnitSphere;
+        randPos.y = 0;
+        newStone.transform.localPosition = randPos;
+    }
+
+    // Update is called once per frame
+    void Update () {
+
+        if (timer < 5)
+        {
+            timer += Time.deltaTime;
+        }
+
+	    
+      //  Debug.Log(timer);
+
+	    if (progress == 0.0f )
 	    {
 	        visibleObject.SetActive(false);
 	        axeIcon.SetActive(true);
-	        woodIcon.SetActive(false);
 	    }
-	    else if(progress >= 100f)
+	    else if(progress > 0)
 	    {
-	        progressBar.GetComponent<ProgressRadialBehaviour>().Value = 0;
-            visibleObject.SetActive(false);
+            visibleObject.SetActive(true);
 	        axeIcon.SetActive(false);
-	        woodIcon.SetActive(true);
         }
-        else 
+	    else if (progress >= 100 && timer > 4)
 	    {
-	        visibleObject.SetActive(true);
-	        axeIcon.SetActive(false);
-	        woodIcon.SetActive(false);
-        }
+	        visibleObject.SetActive(false);
+	        axeIcon.SetActive(true);
+	    }
 
-	    progressBar.GetComponent<ProgressRadialBehaviour>().Value = progress;
+
+        progressBar.GetComponent<ProgressRadialBehaviour>().Value = progress;
 
 	}
 }

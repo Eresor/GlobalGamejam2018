@@ -11,7 +11,8 @@ public class PickableObject : MonoBehaviour
         wood,
         sword,
         coal,
-        any
+        any,
+        axe,
     }
 
 

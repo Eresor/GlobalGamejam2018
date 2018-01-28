@@ -11,6 +11,9 @@ public class PlayerPickingScript : MonoBehaviour
 {
     private List<Collider> TriggerList = new List<Collider>();
 
+    public GameObject wood;
+
+
     public GameObject woodPrefab;
     public GameObject woodSpawner;
 
@@ -61,11 +64,13 @@ public class PlayerPickingScript : MonoBehaviour
             if (!isHolding)
             {
                 Pick();
+
                 BbuttonPressed = false;
             }
             else if (isHolding)
             {
                 Drop();
+                Use();
                 BbuttonPressed = false;
             }
         }
@@ -74,7 +79,7 @@ public class PlayerPickingScript : MonoBehaviour
         {
             if (!isHolding)
             {
-                Use();
+
                 BbuttonPressed = false;
             }
         }
@@ -146,14 +151,29 @@ public class PlayerPickingScript : MonoBehaviour
         var wood = getObject.GetComponent<Wood>();
         if (wood.progress < 100)
         {
-            wood.progress += 10;
+
+            if (!holdingObject)
+                return;
+
+            if (holdingObject.GetComponent<PickableObject>().objectType != PickableObject.ObjectType.axe)
+                return;
+
+
+
+            wood.AddProgress();
             AudioSource audio = GetComponentInParent<AudioSource>();
             audio.Play();
 
-            if (wood.progress == 100)
+            if (wood.progress >= 100)
             {
-               wood.spawnedWood = Instantiate(woodSpawner, woodSpawner.transform.parent,false);
-                wood.spawnedWood.SetActive(true);
+             //  wood.spawnedWood = Instantiate(woodSpawner, woodSpawner.transform.parent,false);
+
+                wood.SpawnWood();
+
+
+
+                wood.progress = 0;
+                wood.progressBar.GetComponent<ProgressRadialBehaviour>().Value = 0;
 
             }
 
