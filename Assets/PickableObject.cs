@@ -29,7 +29,7 @@ public class PickableObject : MonoBehaviour
 		
 	}
 
-    void Pick()
+    public void Pick()
     {
         
     }

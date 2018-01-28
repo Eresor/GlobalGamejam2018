@@ -219,7 +219,7 @@ public class PlayerPickingScript : MonoBehaviour
 
         getObject.transform.SetParent(transform);
         holdingObject = getObject.gameObject;
-
+        getObject.GetComponent<PickableObject>().Pick();
         //Debug.Log("pick");
     }
 
