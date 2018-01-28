@@ -25,8 +25,8 @@ public class QuickTimeEvent : MonoBehaviour
 
     private GameObject currentButton;
 
-    private Action onSuccess;
-    private Action onFail;
+    private Action<int> onSuccess;
+    private Action<int> onFail;
 
     private InputManager.Buttons selectedButton;
 
@@ -41,7 +41,7 @@ public class QuickTimeEvent : MonoBehaviour
         camera = Camera.main;
     }
 
-    public void StartQuickTimeEvent(Vector3 position, Action successAction, Action failAction)
+    public void StartQuickTimeEvent(Vector3 position, Action<int> successAction, Action<int> failAction)
     {
         startedEmissionRise = false;
         onSuccess = successAction;
@@ -98,7 +98,7 @@ public class QuickTimeEvent : MonoBehaviour
             if (inputSuccess)
             {
                 SetEmissionForGem(currentButton, 1f);
-                onSuccess();
+                onSuccess(Player);
                 NextRandomButton();
             }
         }
@@ -111,7 +111,7 @@ public class QuickTimeEvent : MonoBehaviour
         }
         else
         {
-            onFail();
+            onFail(Player);
             NextRandomButton();
         }
     }

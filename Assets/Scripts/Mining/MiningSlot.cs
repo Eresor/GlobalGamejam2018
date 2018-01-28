@@ -26,8 +26,10 @@ public class MiningSlot : WorkSlot
         return true;
     }
 
-    public override void OnSuccess()
+    public override void OnSuccess(int id)
     {
+        base.OnSuccess(id);
+
         ++pickBumber;
 
         if(pickBumber < 4)
@@ -42,9 +44,11 @@ public class MiningSlot : WorkSlot
         randPos.y = 0;
         newStone.transform.localPosition = randPos;
         AxeMineAnimator.SetBool("DoWork",true);
+        QuickTimeEventManager.StopQuickTimeEventForPlayer(id);
     }
-    public override void OnFail()
+    public override void OnFail(int id)
     {
+        base.OnSuccess(id);
         AxeMineAnimator.SetBool("DoWork", false);
     }
 }

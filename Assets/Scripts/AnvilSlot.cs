@@ -26,8 +26,10 @@ public class AnvilSlot : WorkSlot
             : WoodResources.objects.Count >= 1 && SteelResources.objects.Count >= 2;
     }
 
-    public override void OnSuccess()
+    public override void OnSuccess(int id)
     {
+        base.OnSuccess(id);
+
         ++anvilBump;
         if(anvilBump < 4)
             return;
@@ -72,6 +74,7 @@ public class AnvilSlot : WorkSlot
             newObj.transform.localEulerAngles = Vector3.zero;
         }
         audioSource.PlayOneShot(clip);
+        QuickTimeEventManager.StopQuickTimeEventForPlayer(id);
         //QuickTimeEventManager.StopQuickTimeEventForPlayer((int) pc.player);
     }
 }

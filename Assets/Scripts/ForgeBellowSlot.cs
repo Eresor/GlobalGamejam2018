@@ -10,8 +10,9 @@ public class ForgeBellowSlot : WorkSlot
     public Animator BellowAnimator;
     private int bump;
 
-    public override void OnSuccess()
+    public override void OnSuccess(int id)
     {
+        base.OnSuccess(id);
         BellowAnimator.SetBool("DoWork", true);
 
         ++bump;
@@ -34,10 +35,12 @@ public class ForgeBellowSlot : WorkSlot
         //steel.transform.localPosition = IronOutputLoad.holdingSpots[IronOutputLoad.objects.Count].transform.localPosition;
         steel.transform.localPosition = IronOutputLoad.holdingSpot.transform.localPosition;
         steel.GetComponent<PickableObject>().alreadyUsed = false;
+        QuickTimeEventManager.StopQuickTimeEventForPlayer(id);
     }
 
-    public override void OnFail()
+    public override void OnFail(int id)
     {
+        base.OnSuccess(id);
         BellowAnimator.SetBool("DoWork", false);
 
     }

@@ -13,7 +13,7 @@ public class QuickTimeEventTest : MonoBehaviour {
 
     void Test()
     {
-        QuickTimeEventManager.StartQuickTimeEventForPlayer(0,transform.position,()=>Debug.Log("Success"),()=>Debug.Log("Fail"));
+        //QuickTimeEventManager.StartQuickTimeEventForPlayer(0,transform.position,()=>Debug.Log("Success"),()=>Debug.Log("Fail"));
 
     }
 

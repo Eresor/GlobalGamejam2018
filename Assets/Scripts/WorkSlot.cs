@@ -27,9 +27,10 @@ public class WorkSlot : MonoBehaviour
         return true;
     }
 
+    private int id = -1;
     void OnTriggerExit(Collider other)
     {
-        OnFail();
+        OnFail(id);
 
         PlayerController pc = other.GetComponent<PlayerController>();
 
@@ -40,13 +41,16 @@ public class WorkSlot : MonoBehaviour
             return;
 
         QuickTimeEventManager.StopQuickTimeEventForPlayer((int)pc.player);
+        id = -1;
     }
 
-    public virtual void OnSuccess()
+    public virtual void OnSuccess(int playerID)
     {
+        id = playerID;
     }
 
-    public virtual void OnFail()
+    public virtual void OnFail(int playerID)
     {
+        id = playerID;
     }
 }

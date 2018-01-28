@@ -14,7 +14,7 @@ public class QuickTimeEventManager : MonoBehaviour
         eventsObjects = eventsObjects.OrderBy(qte => qte.Player).ToArray();
     }
 
-    public static void StartQuickTimeEventForPlayer(int player, Vector3 position, Action successAction, Action failAction)
+    public static void StartQuickTimeEventForPlayer(int player, Vector3 position, Action<int> successAction, Action<int> failAction)
     {
         eventsObjects[player].StartQuickTimeEvent(position,successAction,failAction);
     }
