@@ -1,11 +1,15 @@
 fileFormatVersion: 2
 guid: 3a701648ba034484aa24bceb676e4346
-timeCreated: 1517045227
+timeCreated: 1517110026
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - WoodResources: {instanceID: 0}
+  - SteelResources: {instanceID: 0}
+  - OutputPlace: {instanceID: 0}
+  - clip: {fileID: 8300000, guid: 26ae720050ce3c94ebe684985abf0006, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -19,10 +19,14 @@ public class PickableObject : MonoBehaviour
 
     [SerializeField] public ObjectType objectType = ObjectType.steel;
 
+    public AudioClip clip;
+    private AudioSource audioSource;
+
     // Use this for initialization
     void Start () {
-		
-	}
+        audioSource = GetComponent<AudioSource>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -31,6 +35,11 @@ public class PickableObject : MonoBehaviour
 
     public void Pick()
     {
-        
+        audioSource.PlayOneShot(clip);
+    }
+
+    public void Drop()
+    {
+        audioSource.PlayOneShot(clip);
     }
 }

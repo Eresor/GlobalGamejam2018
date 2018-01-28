@@ -6,6 +6,7 @@ public class EnemyEventScript : MonoBehaviour {
 
     public AudioClip clipStep;
     public AudioClip clipHit;
+    public float hitVolume, stepVolume;
     private AudioSource audioSource;
 
 	// Use this for initialization
@@ -20,12 +21,14 @@ public class EnemyEventScript : MonoBehaviour {
 
     public void FootStep()
     {
+        audioSource.volume = stepVolume;
         audioSource.PlayOneShot(clipStep);
     }
 
     public void damageGate()
     {
         gateScript.hitGate();
+        audioSource.volume = hitVolume;
         audioSource.PlayOneShot(clipHit);
     }
 }

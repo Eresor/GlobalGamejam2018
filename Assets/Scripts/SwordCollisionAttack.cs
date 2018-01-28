@@ -5,7 +5,13 @@ using UnityEngine;
 
 public class SwordCollisionAttack : MonoBehaviour
 {
+    public AudioClip clip;
+    private AudioSource audioSource;
     public int Durability = 100;
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     void OnCollisionEnter(Collision col)
     {
         var other = col.collider;
@@ -21,7 +27,9 @@ public class SwordCollisionAttack : MonoBehaviour
 
         enemy.onHit();
 
-        if(Durability>0)
+        audioSource.PlayOneShot(clip);
+
+        if (Durability>0)
             return;
 
         GetComponentInParent<PlayerPickingScript>().DestroyPick();

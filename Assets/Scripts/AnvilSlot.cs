@@ -10,6 +10,14 @@ public class AnvilSlot : WorkSlot
     public LoadableObjectScript SteelResources;
     public DropPlaceScript OutputPlace;
 
+    public AudioClip clip;
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public override bool CheckAdditionalWorkConditions(Collider other)
     {
         return OutputType == PickableObject.ObjectType.pickaxe
@@ -57,5 +65,6 @@ public class AnvilSlot : WorkSlot
             newObj.transform.localPosition = Vector3.zero;
             newObj.transform.localEulerAngles = Vector3.zero;
         }
+        audioSource.PlayOneShot(clip);
     }
 }

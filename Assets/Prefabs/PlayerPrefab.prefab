@@ -1308,7 +1308,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cf919e5d0783b1f4aa139ecc3531f9eb, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.224
+  m_Volume: 0.517
   m_Pitch: 0.92
   Loop: 0
   Mute: 0
@@ -1316,7 +1316,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 99
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 15
   MaxDistance: 500
   Pan2D: -0.558
   rolloffMode: 0
@@ -1364,7 +1364,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1412,6 +1412,7 @@ MonoBehaviour:
   m_rigidBody: {fileID: 54710094768803612}
   m_controlMode: 1
   player: 0
+  FootStep_clip: {fileID: 8300000, guid: 94ec4726ab1aac049b8b0abe41b70478, type: 3}
 --- !u!114 &114337753713615706
 MonoBehaviour:
   m_ObjectHideFlags: 1
