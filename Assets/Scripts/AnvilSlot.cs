@@ -72,5 +72,6 @@ public class AnvilSlot : WorkSlot
             newObj.transform.localEulerAngles = Vector3.zero;
         }
         audioSource.PlayOneShot(clip);
+        //QuickTimeEventManager.StopQuickTimeEventForPlayer((int) pc.player);
     }
 }
