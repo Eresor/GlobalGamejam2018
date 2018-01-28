@@ -23,7 +23,8 @@ public class SwordCollisionAttack : MonoBehaviour
         if(Durability>0)
             return;
 
-        Destroy(transform.parent.gameObject);
+        GetComponentInParent<PlayerPickingScript>().DestroyPick();
+
     }
 
 }

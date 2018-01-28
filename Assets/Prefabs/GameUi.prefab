@@ -56,7 +56,6 @@ GameObject:
   - component: {fileID: 222830197919389392}
   - component: {fileID: 114888825952521088}
   - component: {fileID: 114370470021936204}
-  - component: {fileID: 114635985058824908}
   m_Layer: 5
   m_Name: ItemNameText
   m_TagString: Untagged
@@ -280,7 +279,6 @@ GameObject:
   - component: {fileID: 222469712292304224}
   - component: {fileID: 114515266608115348}
   - component: {fileID: 114869788286602604}
-  - component: {fileID: 114239404638418136}
   m_Layer: 5
   m_Name: ItemInfoText
   m_TagString: Untagged
@@ -349,6 +347,7 @@ GameObject:
   - component: {fileID: 224029378959028838}
   - component: {fileID: 222794309148172706}
   - component: {fileID: 114199659274896350}
+  - component: {fileID: 114177681754390388}
   m_Layer: 5
   m_Name: Player1
   m_TagString: Untagged
@@ -503,6 +502,20 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114177681754390388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1888322770005504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67b194791ecc35549ac9df8b27fec344, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemName: {fileID: 114888825952521088}
+  ItemInfo: {fileID: 114515266608115348}
+  PlayerPick: {fileID: 0}
 --- !u!114 &114199659274896350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -530,20 +543,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114239404638418136
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1720264775375800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67b194791ecc35549ac9df8b27fec344, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemName: {fileID: 114515266608115348}
-  ItemInfo: {fileID: 0}
-  PlayerPick: {fileID: 0}
 --- !u!114 &114254090940726422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -857,20 +856,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114635985058824908
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1232987297269350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67b194791ecc35549ac9df8b27fec344, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemName: {fileID: 114888825952521088}
-  ItemInfo: {fileID: 114515266608115348}
-  PlayerPick: {fileID: 0}
 --- !u!114 &114693364659300576
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -73,6 +73,8 @@ public class PlayerAttackScript : MonoBehaviour
             {
                 yield return null;
                 d = q * d;
+                if(sword==null)
+                    yield break;    
                 sword.transform.localRotation = sword.transform.localRotation * qsword;
 
                 //Debug.DrawRay(transform.position, d * radius, Color.green, 5.0f);

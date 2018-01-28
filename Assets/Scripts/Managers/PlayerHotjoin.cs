@@ -8,6 +8,7 @@ public class PlayerHotjoin : MonoBehaviour
 
     public GameObject[] Players;
     public GameObject[] PlayersUI;
+    public GameObject[] PlayersJoinUI;
 
     void Start()
     {
@@ -18,6 +19,10 @@ public class PlayerHotjoin : MonoBehaviour
         foreach (var player in PlayersUI)
         {
             player.SetActive(false);
+        }
+        foreach (var player in PlayersJoinUI)
+        {
+            player.SetActive(true);
         }
     }
 
@@ -30,6 +35,7 @@ public class PlayerHotjoin : MonoBehaviour
 
             Players[i].SetActive(true);
             PlayersUI[i].SetActive(true);
+            PlayersJoinUI[i].SetActive(false);
         }
     }
 

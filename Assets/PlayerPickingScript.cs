@@ -43,6 +43,13 @@ public class PlayerPickingScript : MonoBehaviour
 
     }
 
+    public void DestroyPick()
+    {
+        Destroy(holdingObject);
+        isHolding = false;
+        holdingObject = null;
+    }
+
     void FixedUpdate()
     {
 
@@ -234,9 +241,7 @@ public class PlayerPickingScript : MonoBehaviour
         
 
         if (getObject.GetComponent<DropPlaceScript>().holdingObject != null)
-        {
             return;
-        }
 
 
         isHolding = false;
