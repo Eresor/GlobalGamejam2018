@@ -5,19 +5,18 @@ using UnityEngine;
 
 public class PlayerAttackScript : MonoBehaviour
 {
-    public float radius = 1f;
+    public float radius = 3f;
     public float attackDelay = 1f;
 
     private PlayerController playerController;
     private float delayCounter = 1f;
 
-    private bool XButtonPressed = false;
-    private bool XButtonPressedLast = false;
-    private bool BlastUpdateButtonPressed = false;
-
+    private bool AButtonPressed = false;
+    private bool bumpAttack;
+    private PickableObject sword;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         playerController = GetComponentInParent<PlayerController>();
 
@@ -32,71 +31,74 @@ public class PlayerAttackScript : MonoBehaviour
         }
         else
         {
-            XButtonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.X);
+            AButtonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.A);
         }
-    }
 
-    void FixedUpdate()
-    {
+        if (!AButtonPressed)
+            return;
 
-        if (XButtonPressed)
-            // && gameObject.GetComponentInParent<PlayerPickingScript>().holdingObject.GetComponent<PickableObject>().objectType ==
-            //PickableObject.ObjectType.sword)
-            if (!BlastUpdateButtonPressed &&
-                delayCounter <= 0)
-            {
+        sword = transform.parent.GetComponentInChildren<PickableObject>();
+        if(!sword)
+            return;
 
-                //dodaj animację //TODO
+        if (sword.objectType != PickableObject.ObjectType.sword)
+        {
+            sword = null;
+            return;
+        }
 
-                StartCoroutine(CycylicAttack());
+        AButtonPressed = false;
 
+        if(!bumpAttack)
+            StopAllCoroutines();
 
-                XButtonPressed = false;
-                delayCounter = attackDelay;
-            }
-
-        BlastUpdateButtonPressed = XButtonPressed;
+        bumpAttack = true;
+        StartCoroutine(CycylicAttack());
     }
 
     private IEnumerator CycylicAttack()
     {
-        Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit[] hitTable = Physics.RaycastAll(ray, radius);
-
-        HashSet<GameObject> hitSkeletons = new HashSet<GameObject>();
-        Quaternion q = Quaternion.AngleAxis(1, Vector3.up);
-        Vector3 d = transform.forward;
-
-        for (int i = 0; i < 360; i++)
+        while (bumpAttack)
         {
-            yield return new WaitForSeconds(0.002777778f);
+            bumpAttack = false;
+            Ray ray = new Ray(transform.position, transform.forward);
 
+            HashSet<GameObject> hitSkeletons = new HashSet<GameObject>();
+            float anglesPerFrame = 10f;
+            Quaternion q = Quaternion.AngleAxis(anglesPerFrame, Vector3.up);
+            Quaternion qsword = Quaternion.AngleAxis(anglesPerFrame, Vector3.forward);
+            Vector3 d = playerController.transform.forward;
 
-            d = q * d;
-            Debug.DrawRay(transform.position, d, Color.green, 5.0f);
-
-            ray.direction=d;
-
-                    foreach (RaycastHit hit in hitTable)
+            for (float i = 0; i < 360; i += anglesPerFrame)
             {
-                if (hit.collider != null &&
-                    hit.collider.transform != null &&
-                    hit.collider.transform.parent != null
-                    )
-                {
-                    GameObject collider = hit.collider.transform.parent.gameObject;
-                    if (collider.name.Equals("Skeleton_LightSoldier"))
-                    {
-                        GameObject enemy = collider.transform.parent.gameObject;
-                        bool dontHit = false;
-                        foreach (GameObject skeleton in hitSkeletons)
-                        {
-                            if (skeleton == enemy) dontHit = true;
-                        }
-                        if (!dontHit) enemy.GetComponent<EnemyController>().onHit();
-                        hitSkeletons.Add(enemy);
-                    }
-                }
+                yield return null;
+                d = q * d;
+                if(sword==null)
+                    yield break;    
+                sword.transform.localRotation = sword.transform.localRotation * qsword;
+
+                //Debug.DrawRay(transform.position, d * radius, Color.green, 5.0f);
+                //RaycastHit[] hitTable = Physics.RaycastAll(ray, radius);
+                //ray = new Ray(transform.position, transform.forward);
+                //ray.direction = d;
+
+                //foreach (RaycastHit hit in hitTable)
+                //{
+                //    if (hit.collider != null &&
+                //        hit.collider.transform != null &&
+                //        hit.collider.transform.parent != null
+                //    )
+                //    {
+                //        GameObject collider = hit.collider.transform.parent.gameObject;
+                //        if (collider.name.Equals("Skeleton_LightSoldier"))
+                //        {
+                //            GameObject enemy = collider.transform.parent.gameObject;
+                //            bool dontHit = hitSkeletons.Contains(enemy);
+                //            if (!dontHit) enemy.GetComponent<EnemyController>().onHit();
+                //            hitSkeletons.Add(enemy);
+                //        }
+                //    }
+                //}
             }
         }
     }

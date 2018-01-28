@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MiningSlot : WorkSlot
 {
+    public Animator AxeMineAnimator;
     public Transform NewRocksSpawnTransform;
     public PickableObject.ObjectType MiningSlotType;
 
@@ -33,10 +34,11 @@ public class MiningSlot : WorkSlot
         var randPos = 20 * UnityEngine.Random.onUnitSphere;
         randPos.y = 0;
         newStone.transform.localPosition = randPos;
+        AxeMineAnimator.SetBool("DoWork",true);
     }
     public override void OnFail()
     {
-
+        AxeMineAnimator.SetBool("DoWork", false);
     }
 }
 

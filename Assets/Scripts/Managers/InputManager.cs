@@ -17,7 +17,9 @@ namespace Managers
             A,
             B,
             X,
-            Y
+            Y,
+            Reset,
+            Start
         }
 
         public enum Player

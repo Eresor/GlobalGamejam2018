@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour {
+public class EnemyController : MonoBehaviour
+{
 
     public Transform target;
     public NavMeshAgent agent;
     public Animator anim;
 
-    public float HP = 3;
+    public float HP = 1;
 
     private bool isHit;
     private bool isDead;

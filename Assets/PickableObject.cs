@@ -10,7 +10,8 @@ public class PickableObject : MonoBehaviour
         ironOre,
         wood,
         sword,
-        coal
+        coal,
+        any
     }
 
 

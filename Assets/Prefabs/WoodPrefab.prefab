@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 65766192292118128}
   - component: {fileID: 114355268916701328}
   - component: {fileID: 114954780423846658}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WoodPrefab
   m_TagString: PickableObject
   m_Icon: {fileID: 0}
@@ -38,13 +38,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1237022848864314}
-  m_LocalRotation: {x: 0.9904585, y: -0.044217147, z: 0.13039604, w: 0.005821138}
-  m_LocalPosition: {x: -30.3, y: -103.7, z: 6.8}
-  m_LocalScale: {x: 0.6950266, y: 0.6950265, z: 0.6950267}
+  m_LocalRotation: {x: 0.70257974, y: 0.061273288, z: 0.123303965, w: -0.6981572}
+  m_LocalPosition: {x: -152.9, y: 42.6, z: -15.1}
+  m_LocalScale: {x: 0.1390053, y: 0.13900535, z: 0.13900538}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 1.322, y: -194.943, z: -175.061}
+  m_LocalEulerAnglesHint: {x: -84.95901, y: -273.429, z: -101.58501}
 --- !u!23 &23767378261511104
 MeshRenderer:
   m_ObjectHideFlags: 1

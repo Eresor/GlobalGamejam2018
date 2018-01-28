@@ -222,4 +222,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alreadyUsed: 0
-  objectType: 0
+  objectType: 1

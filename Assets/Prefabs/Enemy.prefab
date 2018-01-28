@@ -1990,7 +1990,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1014880471511632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.47, y: 41.49727, z: -195.79}
+  m_LocalPosition: {x: -118.61661, y: 41.49727, z: 36.432846}
   m_LocalScale: {x: 6, y: 6, z: 6}
   m_Children:
   - {fileID: 4019620881297650}
@@ -2239,7 +2239,7 @@ MonoBehaviour:
   target: {fileID: 0}
   agent: {fileID: 195712576570304436}
   anim: {fileID: 95701015954930358}
-  HP: 3
+  HP: 1
   enemyTargetWidth: 40
 --- !u!114 &114738916673658826
 MonoBehaviour:

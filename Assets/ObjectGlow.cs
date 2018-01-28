@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 
 public class ObjectGlow : MonoBehaviour
 {
-    public Color GlowColor;
+    public Color GlowColor = Color.white;
     public float LerpFactor = 10;
 
     public Renderer[] Renderers

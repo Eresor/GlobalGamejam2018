@@ -36,11 +36,18 @@ public class PlayerPickingScript : MonoBehaviour
 
     void Update()
     {
-        BbuttonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.B);
-        AButtonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.A);
+        BbuttonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.A);
+        //AButtonPressed = InputManager.GetPlayerButtonDown(playerController.player, InputManager.Buttons.A);
 
 
 
+    }
+
+    public void DestroyPick()
+    {
+        Destroy(holdingObject);
+        isHolding = false;
+        holdingObject = null;
     }
 
     void FixedUpdate()
@@ -178,14 +185,14 @@ public class PlayerPickingScript : MonoBehaviour
         }
 
 
-        var wood = TriggerList.FirstOrDefault(x => x.GetComponent<Wood>() != null);
-        if (wood == null)
-        {
-            return;
-        }
-        Debug.Log("znaleziono drewno");
+        //var wood = TriggerList.FirstOrDefault(x => x.GetComponent<Wood>() != null);
+        //if (wood == null)
+        //{
+        //    return;
+        //}
+        //Debug.Log("znaleziono drewno");
 
-        wood.GetComponent<Wood>().spawnedWood = null;
+        //wood.GetComponent<Wood>().spawnedWood = null;
 
 
 
@@ -234,9 +241,7 @@ public class PlayerPickingScript : MonoBehaviour
         
 
         if (getObject.GetComponent<DropPlaceScript>().holdingObject != null)
-        {
             return;
-        }
 
 
         isHolding = false;
@@ -260,29 +265,31 @@ public class PlayerPickingScript : MonoBehaviour
     {
         var getObject = TriggerList.FirstOrDefault(x => x.CompareTag("LoadableObject"));
 
-        if (getObject.GetComponent<LoadableObjectScript>().objects.Count >= getObject.GetComponent<LoadableObjectScript>().maxHold)
+        var loadables = getObject.GetComponents<LoadableObjectScript>();
+
+        foreach (var loadableObjectScript in loadables)
         {
-            return;
+            if (loadableObjectScript.objects.Count >= loadableObjectScript.maxHold)
+                continue;
+
+            if (loadableObjectScript.Type != PickableObject.ObjectType.any && loadableObjectScript.Type != holdingObject.GetComponent<PickableObject>().objectType)
+                continue;
+
+
+            isHolding = false;
+
+
+            loadableObjectScript.objects.Add(holdingObject);
+
+            holdingObject.GetComponent<PickableObject>().alreadyUsed = true;
+            holdingObject.transform.position = loadableObjectScript.holdingSpots[loadableObjectScript.objects.Count - 1].transform.position;
+
+            holdingObject.transform.parent = getObject.transform;
+
+            holdingObject.GetComponent<Collider>().enabled = true;
+            holdingObject = null;
+            break;
         }
-
-        if(getObject.GetComponent<LoadableObjectScript>().Type!=holdingObject.GetComponent<PickableObject>().objectType)
-            return;
-
-
-        isHolding = false;
-
-
-        getObject.GetComponent<LoadableObjectScript>().objects.Add(holdingObject);
-
-        holdingObject.GetComponent<PickableObject>().alreadyUsed = true;
-        holdingObject.transform.position = getObject.GetComponent<LoadableObjectScript>().holdingSpots[getObject.GetComponent<LoadableObjectScript>().objects.Count-1].transform.position;
-
-        holdingObject.transform.parent = getObject.transform;
-
-        holdingObject.GetComponent<Collider>().enabled = true;
-        holdingObject = null;
-
-
 
         //////////// TUTAJ WYWOLA AKCJE JEZELI BEDZIE MAX PRZEDMiTów:OOOO
 

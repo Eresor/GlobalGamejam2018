@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: free_male_1_body
+  m_Name: free_male_1_body_green
   m_Shader: {fileID: 4800000, guid: 442f40f05878ff645995c0d278686da4, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -39,7 +39,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 66f042053f73a50488acb6b09c6afdd2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 77a95955ac9e8134d8547b59ea36e0d3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
