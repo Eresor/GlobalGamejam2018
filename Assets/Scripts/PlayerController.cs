@@ -126,8 +126,11 @@ public class PlayerController : MonoBehaviour
 
     private void DirectUpdate()
     {
-        if(InputManager.GetPlayerButtonDown(player,InputManager.Buttons.Reset))
+        if (InputManager.GetPlayerButtonDown(player, InputManager.Buttons.Reset))
+        {
             transform.position = startPosition;
+            GetComponent<Rigidbody>().velocity.Set(0,0,0);
+        }
 
         float v = InputManager.GetPlayerAxis(player, InputManager.Axis.Vertical);
         float h = InputManager.GetPlayerAxis(player, InputManager.Axis.Horizontal);
