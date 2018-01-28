@@ -23,6 +23,9 @@ public class SwordCollisionAttack : MonoBehaviour
         if (!enemy)
             return;
 
+        if (enemy.HP<=0)
+            return;
+
         --Durability;
 
         enemy.onHit();
