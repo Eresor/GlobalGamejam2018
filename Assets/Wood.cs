@@ -34,7 +34,7 @@ public class Wood : MonoBehaviour
     public void SpawnWood()
     {
         var newStone = Instantiate(PrefabsProvider.Instance.WoodPrefab, NewRocksSpawnTransform);
-        var randPos = 20 * UnityEngine.Random.onUnitSphere;
+        var randPos = 5 * UnityEngine.Random.onUnitSphere;
         randPos.y = 0;
         newStone.transform.localPosition = randPos;
         newStone.SetActive(true);
