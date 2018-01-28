@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyEventScript : MonoBehaviour {
 
-    public AudioClip clipStep;
+    public AudioClip clipStep0, clipStep1, clipStep2, clipStep3;
     public AudioClip clipHit;
     public float hitVolume, stepVolume;
     private AudioSource audioSource;
@@ -22,7 +22,22 @@ public class EnemyEventScript : MonoBehaviour {
     public void FootStep()
     {
         audioSource.volume = stepVolume;
-        audioSource.PlayOneShot(clipStep);
+        int whichStep = Random.Range(0, 4);
+        switch (whichStep)
+        {
+            case 0:
+                audioSource.PlayOneShot(clipStep0);
+                break;
+            case 1:
+                audioSource.PlayOneShot(clipStep1);
+                break;
+            case 2:
+                audioSource.PlayOneShot(clipStep2);
+                break;
+            case 3:
+                audioSource.PlayOneShot(clipStep3);
+                break;
+        }
     }
 
     public void damageGate()
